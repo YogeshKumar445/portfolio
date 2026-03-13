@@ -1,572 +1,818 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Yogesh Kumar — Senior Full Stack Developer</title>
-  <meta name="description" content="Portfolio of Yogesh Kumar — Full Stack Developer specializing in Java, MERN Stack, DevOps & Cloud." />
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=JetBrains+Mono:wght@300;400;500&family=Satoshi:wght@400;500;700&display=swap" rel="stylesheet" />
-  <!-- Fallback fonts if Cabinet Grotesk doesn't load -->
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800;900&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Yogesh Kumar — Full Stack Developer</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800;900&family=JetBrains+Mono:wght@400;500&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --cyan:#00e5ff;--violet:#7c3aed;--em:#10b981;--am:#f59e0b;
+  --bg:#060810;--bg1:#0a0d18;--sf:#141828;--s2:#1a2035;
+  --bd:rgba(255,255,255,.07);--bd2:rgba(255,255,255,.12);
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:#e2e8f0;font-family:'Plus Jakarta Sans',sans-serif;overflow-x:hidden;cursor:none}
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-thumb{background:var(--violet);border-radius:2px}
+a{text-decoration:none;color:inherit}
+button{cursor:none;border:none;background:none}
+
+/* ── Cursor ── */
+#cdot{position:fixed;top:0;left:0;width:10px;height:10px;background:var(--cyan);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s}
+#cring{position:fixed;top:0;left:0;width:36px;height:36px;border:1.5px solid rgba(0,229,255,.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:all .15s ease}
+#cring.big{width:52px;height:52px;background:rgba(0,229,255,.06);border-color:var(--cyan)}
+
+/* ── Scroll bar ── */
+#spb{position:fixed;top:0;left:0;height:2px;width:0;background:linear-gradient(90deg,var(--violet),var(--cyan));z-index:900}
+
+/* ── Navbar ── */
+#nav{position:fixed;top:0;left:0;right:0;height:60px;z-index:700;transition:background .35s,border-color .35s}
+#nav.scrolled{background:rgba(6,8,16,.9);backdrop-filter:blur(20px);border-bottom:1px solid var(--bd)}
+.nav-in{max-width:1100px;margin:0 auto;padding:0 40px;height:100%;display:flex;align-items:center;justify-content:space-between}
+.nav-logo{font-family:'Syne',sans-serif;font-size:22px;font-weight:900;letter-spacing:-1px}
+.nav-links{display:flex;gap:4px;list-style:none}
+.nav-links a{padding:7px 13px;border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:12px;color:rgba(255,255,255,.45);transition:all .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--cyan);background:rgba(0,229,255,.09)}
+.nav-gh{display:flex;align-items:center;gap:6px;padding:8px 14px;background:var(--sf);border:1px solid var(--bd2);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:12px;color:rgba(255,255,255,.45);transition:all .2s}
+.nav-gh:hover{border-color:var(--cyan);color:var(--cyan)}
+.hbg{display:none;flex-direction:column;gap:5px;padding:4px;cursor:pointer}
+.hbg span{display:block;width:22px;height:1.5px;background:rgba(255,255,255,.7);border-radius:2px;transition:all .3s}
+.hbg.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hbg.open span:nth-child(2){opacity:0;transform:scaleX(0)}
+.hbg.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+
+/* ── Mobile nav ── */
+#mob{display:none;position:fixed;inset:0;top:60px;background:rgba(6,8,16,.97);backdrop-filter:blur(24px);z-index:600;flex-direction:column;align-items:center;justify-content:center;gap:28px}
+#mob.open{display:flex}
+#mob a{font-family:'Syne',sans-serif;font-size:28px;font-weight:700;color:rgba(255,255,255,.6);transition:color .2s}
+#mob a:hover{color:var(--cyan)}
+
+/* ── Sections ── */
+.sec{padding:100px 0}
+.wrap{max-width:1100px;margin:0 auto;padding:0 48px}
+.sec-tag{display:block;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--cyan);text-transform:uppercase;letter-spacing:.12em;margin-bottom:12px;opacity:.8}
+.sec-title{font-family:'Syne',sans-serif;font-size:clamp(34px,5vw,54px);font-weight:900;letter-spacing:-2px;line-height:1.05}
+.sec-head{margin-bottom:56px}
+
+/* ── Reveal ── */
+.rv{opacity:0;transform:translateY(32px);transition:opacity .75s ease,transform .75s ease;transition-delay:var(--d,0ms)}
+.rv.in{opacity:1;transform:none}
+
+/* ── HERO ── */
+#hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;padding:100px 24px 80px}
+#hcv{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+.hgrid{position:absolute;inset:0;background-image:linear-gradient(rgba(0,229,255,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(0,229,255,.025) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 80% at 50% 50%,black,transparent);pointer-events:none}
+.orb{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;animation:orbF 9s ease-in-out infinite}
+.o1{width:500px;height:500px;background:radial-gradient(circle,rgba(124,58,237,.14),transparent 70%);top:-80px;right:-80px}
+.o2{width:400px;height:400px;background:radial-gradient(circle,rgba(0,229,255,.1),transparent 70%);bottom:-40px;left:-60px;animation-duration:12s;animation-delay:3s}
+.hi{position:relative;z-index:2;max-width:860px;width:100%;text-align:center}
+.h-badge{display:inline-flex;align-items:center;gap:10px;padding:8px 18px;background:rgba(255,255,255,.04);border:1px solid var(--bd2);border-radius:100px;font-family:'JetBrains Mono',monospace;font-size:12px;color:rgba(255,255,255,.45);margin-bottom:32px;backdrop-filter:blur(10px)}
+.bdot{width:8px;height:8px;background:var(--em);border-radius:50%;animation:pdot 2s ease-out infinite}
+.h-name{font-family:'Syne',sans-serif;font-weight:900;font-size:clamp(60px,11vw,124px);line-height:.95;letter-spacing:-4px;margin-bottom:18px;display:flex;flex-direction:column;align-items:center;gap:4px}
+.ns{background:linear-gradient(135deg,#e2e8f0 40%,rgba(255,255,255,.25));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.no{-webkit-text-stroke:2px rgba(255,255,255,.12);color:transparent}
+.h-role{display:flex;align-items:center;justify-content:center;gap:10px;font-size:clamp(14px,2.2vw,22px);margin-bottom:18px;min-height:38px}
+.h-sub{color:rgba(255,255,255,.4);font-size:16px;line-height:2;margin-bottom:44px}
+.h-cta{display:flex;align-items:center;justify-content:center;gap:12px;margin-bottom:64px;flex-wrap:wrap}
+.btn-p{display:inline-flex;align-items:center;gap:8px;padding:14px 28px;background:var(--cyan);color:#060810;border-radius:12px;font-weight:700;font-size:14px;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s;box-shadow:0 0 28px rgba(0,229,255,.25)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 16px 40px rgba(0,229,255,.38)}
+.btn-g{display:inline-flex;align-items:center;padding:14px 28px;background:var(--sf);border:1px solid var(--bd2);border-radius:12px;font-weight:600;font-size:14px;color:rgba(255,255,255,.75);transition:all .2s}
+.btn-g:hover{border-color:var(--cyan);color:var(--cyan);transform:translateY(-2px)}
+.btn-i{width:48px;height:48px;display:inline-flex;align-items:center;justify-content:center;background:var(--sf);border:1px solid var(--bd2);border-radius:12px;color:rgba(255,255,255,.45);transition:all .2s}
+.btn-i:hover{color:white;background:var(--s2)}
+.h-stats{display:flex;align-items:center;justify-content:center;gap:40px}
+.stn{font-family:'Syne',sans-serif;font-size:36px;font-weight:900;letter-spacing:-1px}
+.stl{display:block;font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.25);text-transform:uppercase;letter-spacing:.1em;margin-top:4px}
+.std{width:1px;height:44px;background:var(--bd)}
+.scroll-h{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;z-index:2}
+.sla{width:1px;height:50px;background:linear-gradient(to bottom,var(--cyan),transparent);animation:sla 2s ease-in-out infinite}
+
+/* ── About ── */
+.ag{display:grid;grid-template-columns:300px 1fr;gap:52px;align-items:start}
+.acard{background:var(--sf);border:1px solid var(--bd);border-radius:20px;padding:36px 24px;text-align:center;position:relative;overflow:hidden}
+.acard::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--violet),var(--cyan))}
+.avw{position:relative;width:88px;height:88px;margin:0 auto}
+.avr1{position:absolute;inset:0;border-radius:50%;border:1.5px solid rgba(0,229,255,.35);animation:sr 5s linear infinite}
+.avr2{position:absolute;inset:8px;border-radius:50%;border:1.5px solid rgba(124,58,237,.35);animation:sr 8s linear infinite reverse}
+.avc{position:absolute;inset:16px;background:linear-gradient(135deg,var(--violet),var(--cyan));border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Syne',sans-serif;font-size:22px;font-weight:900}
+.cbadge{display:inline-block;padding:3px 11px;background:rgba(0,229,255,.1);border:1px solid rgba(0,229,255,.2);border-radius:100px;font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--cyan)}
+.acst{display:flex;justify-content:space-around;border-top:1px solid var(--bd);padding-top:18px;margin-top:18px}
+.acst div{display:flex;flex-direction:column;align-items:center;gap:3px}
+.acst strong{font-family:'Syne',sans-serif;font-size:14px;font-weight:700}
+.acst small{font-family:'JetBrains Mono',monospace;font-size:9px;color:rgba(255,255,255,.25);text-transform:uppercase;letter-spacing:.06em}
+.alead{font-size:17px;line-height:1.8;color:rgba(255,255,255,.82);margin-bottom:16px}
+.abody{font-size:14px;color:rgba(255,255,255,.45);line-height:1.9;margin-bottom:28px}
+.itag{display:inline-block;padding:2px 9px;background:rgba(0,229,255,.1);border:1px solid rgba(0,229,255,.2);border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--cyan)}
+.itag.v{background:rgba(124,58,237,.1);border-color:rgba(124,58,237,.2);color:#a78bfa}
+.itag.a{background:rgba(245,158,11,.1);border-color:rgba(245,158,11,.2);color:var(--am)}
+.intg{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.inti{display:flex;align-items:center;gap:7px;padding:11px 13px;background:var(--sf);border:1px solid var(--bd);border-radius:10px;font-size:13px;color:rgba(255,255,255,.45);transition:all .2s}
+.inti:hover{border-color:rgba(0,229,255,.3);color:rgba(255,255,255,.8);transform:translateY(-2px)}
+
+/* ── Skills ── */
+.skg{display:grid;grid-template-columns:1.2fr 1fr;gap:52px;align-items:start}
+.sksub{font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.25);text-transform:uppercase;letter-spacing:.1em;margin-bottom:24px}
+.skl{display:flex;flex-direction:column;gap:16px}
+.ski .skm{display:flex;justify-content:space-between;font-size:14px;font-weight:500;margin-bottom:7px}
+.ski .skm span:last-child{font-family:'JetBrains Mono',monospace;font-size:12px;color:rgba(255,255,255,.3)}
+.skt{height:4px;background:var(--s2);border-radius:2px;overflow:hidden}
+.skf{height:100%;width:0;border-radius:2px;background:var(--c,var(--cyan));transition:width 1.3s cubic-bezier(0,0,.2,1)}
+.ccloud{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:22px}
+.tchip{padding:7px 13px;background:var(--sf);border:1px solid var(--bd);border-radius:8px;font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.4);transition:all .2s;cursor:default}
+.tchip:hover{background:rgba(0,229,255,.08);border-color:rgba(0,229,255,.35);color:var(--cyan);transform:translateY(-3px);box-shadow:0 8px 20px rgba(0,229,255,.18)}
+.tbox{background:var(--bg1);border:1px solid var(--bd2);border-radius:12px;overflow:hidden}
+.thdr{display:flex;align-items:center;gap:5px;padding:10px 14px;background:rgba(255,255,255,.02);border-bottom:1px solid var(--bd)}
+.td{width:10px;height:10px;border-radius:50%}
+.tbody{padding:14px;font-family:'JetBrains Mono',monospace;font-size:12px;line-height:2}
+.tr{display:flex;gap:8px}
+.to{color:rgba(255,255,255,.25);padding-left:18px}
+
+/* ── Projects ── */
+.fb-wrap{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:32px}
+.fb{padding:8px 20px;background:var(--sf);border:1px solid var(--bd);border-radius:100px;font-family:'JetBrains Mono',monospace;font-size:12px;color:rgba(255,255,255,.4);cursor:pointer;transition:all .2s}
+.fb:hover{border-color:rgba(0,229,255,.35);color:var(--cyan)}
+.fb.active{background:var(--cyan);border-color:var(--cyan);color:#060810;font-weight:600}
+.pgg{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pc{background:var(--sf);border:1px solid var(--bd);border-radius:20px;overflow:hidden;position:relative;transform-style:preserve-3d;transition:border-color .3s,box-shadow .3s,opacity .4s,transform .4s}
+.pc:hover{border-color:rgba(0,229,255,.25)}
+.pc.hide{opacity:0;transform:scale(.9) translateY(16px);pointer-events:none}
+.pcf{border-color:rgba(0,229,255,.18)}
+.pcf::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--violet),var(--cyan))}
+.pcgl{position:absolute;inset:0;opacity:0;transition:opacity .4s;pointer-events:none}
+.pc:hover .pcgl{opacity:1}
+.fbadge{position:absolute;top:14px;right:14px;padding:3px 10px;background:var(--cyan);color:#060810;border-radius:100px;font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:700;z-index:2}
+.pcb{padding:24px 20px;position:relative;z-index:1;display:flex;flex-direction:column;gap:10px;height:100%}
+.pctp{display:flex;align-items:center;justify-content:space-between}
+.pcn{font-family:'Syne',sans-serif;font-size:44px;font-weight:900;color:rgba(255,255,255,.05);line-height:1;transition:color .3s}
+.pc:hover .pcn{color:rgba(0,229,255,.08)}
+.pcl{width:33px;height:33px;background:var(--bg1);border:1px solid var(--bd2);border-radius:8px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.3);font-size:15px;transition:all .2s}
+.pcl:hover{background:var(--cyan);border-color:var(--cyan);color:#060810}
+.pct{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;transition:color .3s;flex:1}
+.pc:hover .pct{color:var(--cyan)}
+.pcd{font-size:13px;color:rgba(255,255,255,.4);line-height:1.7}
+.pcst{display:flex;flex-wrap:wrap;gap:5px}
+.pcst span{padding:3px 9px;background:var(--bg);border:1px solid var(--bd);border-radius:6px;font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.28)}
+.pcp{display:flex;align-items:center;gap:10px;border-top:1px solid var(--bd);padding-top:10px;margin-top:4px}
+.ppb{flex:1;height:2px;background:var(--s2);border-radius:1px;overflow:hidden}
+.ppf{height:100%;background:linear-gradient(90deg,var(--violet),var(--cyan));border-radius:1px}
+.ppl{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.25)}
+
+/* ── GitHub ── */
+.ghbar{display:flex;align-items:center;gap:16px;background:var(--sf);border:1px solid var(--bd);border-radius:18px;padding:20px 24px;margin-bottom:24px;flex-wrap:wrap}
+.ghav{width:52px;height:52px;border-radius:50%;border:2px solid var(--bd2);object-fit:cover}
+.ghst{display:flex;gap:24px}
+.ghst div{display:flex;flex-direction:column;gap:2px;align-items:center}
+.ghst small{font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.25);text-transform:uppercase;letter-spacing:.06em}
+.ghvb{padding:10px 18px;background:rgba(0,229,255,.1);border:1px solid rgba(0,229,255,.25);border-radius:10px;font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--cyan);transition:all .2s;white-space:nowrap}
+.ghvb:hover{background:var(--cyan);color:#060810}
+.rgg{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;min-height:160px}
+.rload{grid-column:1/-1;display:flex;align-items:center;justify-content:center;gap:12px;padding:60px;font-family:'JetBrains Mono',monospace;font-size:13px;color:rgba(255,255,255,.3)}
+.rspin{width:20px;height:20px;border:2px solid var(--bd2);border-top-color:var(--cyan);border-radius:50%;animation:spin 0.8s linear infinite}
+.rc{background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:16px;display:flex;flex-direction:column;gap:9px;opacity:0;animation:fup .5s ease forwards;transition:border-color .2s,transform .25s}
+.rc:hover{border-color:rgba(0,229,255,.25);transform:translateY(-4px)}
+.rcn{font-family:'Syne',sans-serif;font-size:13px;font-weight:700;color:var(--cyan);word-break:break-all;line-height:1.3}
+.rcl{width:26px;height:26px;background:var(--bg);border:1px solid var(--bd2);border-radius:6px;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.3);font-size:12px;flex-shrink:0;transition:all .2s}
+.rcl:hover{background:var(--cyan);color:#060810;border-color:var(--cyan)}
+.rcd{font-size:12px;color:rgba(255,255,255,.3);line-height:1.6;flex:1}
+.rcm{display:flex;align-items:center;flex-wrap:wrap;gap:8px;font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.25)}
+.rld{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:3px}
+
+/* ── Profiles ── */
+.prfg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.prfc{position:relative;background:var(--sf);border:1px solid var(--bd);border-radius:20px;padding:30px 24px;display:flex;flex-direction:column;gap:7px;overflow:hidden;transition:all .3s;transform-style:preserve-3d}
+.prfc:hover{transform:translateY(-6px);border-color:rgba(255,255,255,.14)}
+.prfbg{position:absolute;inset:0;background:linear-gradient(135deg,var(--c1),var(--c2));opacity:0;transition:opacity .35s;border-radius:20px}
+.prfc:hover .prfbg{opacity:.13}
+.prfic{width:36px;height:36px;color:rgba(255,255,255,.5);position:relative;z-index:1;margin-bottom:6px}
+.prfn{font-family:'Syne',sans-serif;font-size:21px;font-weight:800;position:relative;z-index:1}
+.prfh{font-family:'JetBrains Mono',monospace;font-size:12px;color:rgba(255,255,255,.3);position:relative;z-index:1}
+.prfa{position:absolute;top:20px;right:20px;font-size:19px;color:rgba(255,255,255,.2);transition:all .3s;z-index:1}
+.prfc:hover .prfa{color:rgba(255,255,255,.85);transform:translate(3px,-3px)}
+
+/* ── Achievements ── */
+.achl{display:flex;flex-direction:column;gap:12px}
+.achi{position:relative;display:flex;align-items:flex-start;gap:18px;background:var(--sf);border:1px solid var(--bd);border-radius:18px;padding:24px 26px;overflow:hidden;transition:border-color .3s,transform .3s}
+.achi:hover{border-color:rgba(0,229,255,.2);transform:translateX(6px)}
+.achb{position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,var(--violet),var(--cyan));transform:scaleY(0);transform-origin:top;transition:transform .55s ease .3s}
+.achi.in .achb{transform:scaleY(1)}
+.achx{font-family:'Syne',sans-serif;font-size:42px;font-weight:900;color:rgba(255,255,255,.05);line-height:1;min-width:50px}
+.achic{font-size:26px;margin-top:4px}
+.acht{font-family:'Syne',sans-serif;font-size:17px;font-weight:700;margin-bottom:7px;transition:color .3s}
+.achi:hover .acht{color:var(--cyan)}
+.achd{font-size:13px;color:rgba(255,255,255,.38);line-height:1.7}
+
+/* ── Contact ── */
+.cg{display:grid;grid-template-columns:1.4fr 1fr;gap:44px;align-items:start}
+.cf{display:flex;flex-direction:column;gap:20px}
+.fg{position:relative}
+.fg input,.fg textarea{width:100%;background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:22px 16px 8px;color:white;font-family:'Plus Jakarta Sans',sans-serif;font-size:14px;outline:none;resize:none;transition:border-color .2s}
+.fg input:focus,.fg textarea:focus{border-color:var(--cyan)}
+.fg label{position:absolute;top:14px;left:16px;font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.28);pointer-events:none;transition:all .2s;text-transform:uppercase;letter-spacing:.06em}
+.fg input:focus+label,.fg input:not(:placeholder-shown)+label,
+.fg textarea:focus+label,.fg textarea:not(:placeholder-shown)+label{top:5px;font-size:9px;color:var(--cyan)}
+.fl{position:absolute;bottom:0;left:0;width:0;height:2px;background:var(--cyan);border-radius:1px;transition:width .3s}
+.fg input:focus~.fl,.fg textarea:focus~.fl{width:100%}
+.cfbtn{display:flex;align-items:center;justify-content:center;gap:9px;padding:14px 28px;background:var(--cyan);border-radius:12px;color:#060810;font-size:15px;font-weight:700;cursor:pointer;border:none;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s;width:100%}
+.cfbtn:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(0,229,255,.38)}
+.cfsuc{display:none;flex-direction:column;align-items:center;gap:12px;padding:48px 24px;background:rgba(16,185,129,.07);border:1px solid rgba(16,185,129,.25);border-radius:18px;text-align:center}
+.cfw{width:54px;height:54px;background:rgba(16,185,129,.12);border:2px solid var(--em);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--em);font-weight:bold;animation:pop .4s ease}
+.ci{display:flex;flex-direction:column;gap:10px}
+.cii{display:flex;align-items:center;gap:12px;background:var(--sf);border:1px solid var(--bd);border-radius:12px;padding:15px 14px}
+.cii span:first-child{font-size:19px}
+.cii div{display:flex;flex-direction:column;gap:2px}
+.cii strong{font-size:13px;font-weight:600}
+.cii span:last-child{font-family:'JetBrains Mono',monospace;font-size:12px;color:rgba(255,255,255,.3)}
+.csoc{display:flex;gap:8px;margin-top:4px}
+.csoc a{flex:1;padding:12px;background:var(--sf);border:1px solid var(--bd);border-radius:10px;text-align:center;font-family:'JetBrains Mono',monospace;font-size:12px;color:rgba(255,255,255,.35);transition:all .2s}
+.csoc a:hover{background:rgba(0,229,255,.08);border-color:rgba(0,229,255,.3);color:var(--cyan)}
+
+/* ── Footer ── */
+footer{background:#040508;border-top:1px solid var(--bd);padding:48px 0;text-align:center}
+.ftl{font-family:'JetBrains Mono',monospace;font-size:12px;color:rgba(255,255,255,.25);transition:color .2s}
+.ftl:hover{color:var(--cyan)}
+
+/* ── Animations ── */
+@keyframes orbF{0%,100%{transform:translate(0,0) scale(1)}33%{transform:translate(20px,-14px) scale(1.04)}66%{transform:translate(-14px,10px) scale(.96)}}
+@keyframes pdot{0%{box-shadow:0 0 0 0 rgba(16,185,129,.4)}70%{box-shadow:0 0 0 8px rgba(16,185,129,0)}100%{box-shadow:0 0 0 0 rgba(16,185,129,0)}}
+@keyframes sr{to{transform:rotate(360deg)}}
+@keyframes blink{50%{opacity:0}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes fup{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes sla{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+@keyframes pop{from{transform:scale(0)}to{transform:scale(1)}}
+.blink{animation:blink .9s step-end infinite}
+
+/* ── Responsive ── */
+@media(max-width:1024px){
+  .ag,.skg,.cg{grid-template-columns:1fr}
+  .pgg{grid-template-columns:repeat(2,1fr)}
+  .prfg{grid-template-columns:repeat(2,1fr)}
+  .rgg{grid-template-columns:repeat(2,1fr)}
+  .wrap{padding:0 32px}
+}
+@media(max-width:768px){
+  body{cursor:auto}#cdot,#cring{display:none}a,button{cursor:pointer}
+  .sec{padding:72px 0}.wrap{padding:0 20px}
+  .pgg,.prfg,.rgg{grid-template-columns:1fr}
+  .nav-links,.nav-gh{display:none}.hbg{display:flex}
+  .h-stats{gap:20px}.stn{font-size:28px}
+  .intg{grid-template-columns:repeat(2,1fr)}
+}
+</style>
 </head>
-<body class="loading">
+<body>
 
-  <!-- Page Transition Overlay -->
-  <div class="page-transition" id="pageTransition">
-    <div class="pt-line"></div>
-    <div class="pt-line"></div>
-    <div class="pt-line"></div>
-    <div class="pt-line"></div>
-    <div class="pt-line"></div>
-  </div>
+<!-- Cursor -->
+<div id="cdot"></div>
+<div id="cring"></div>
+<!-- Scroll bar -->
+<div id="spb"></div>
 
-  <!-- Custom Cursor -->
-  <div class="cursor" id="cursor">
-    <div class="cursor-inner"></div>
-    <div class="cursor-text" id="cursorText"></div>
-  </div>
-  <div class="cursor-follower" id="cursorFollower"></div>
-
-  <!-- Loader -->
-  <div class="loader" id="loader">
-    <div class="loader-bg-lines">
-      <div class="lbl" style="--i:0"></div>
-      <div class="lbl" style="--i:1"></div>
-      <div class="lbl" style="--i:2"></div>
-      <div class="lbl" style="--i:3"></div>
-      <div class="lbl" style="--i:4"></div>
-    </div>
-    <div class="loader-content">
-      <div class="loader-logo">YK<span>.</span></div>
-      <div class="loader-terminal">
-        <div class="lt-line" id="lt1"><span class="lp">❯</span> <span class="lt-cmd">initializing portfolio</span><span class="lt-cursor">_</span></div>
-        <div class="lt-line" id="lt2" style="opacity:0"><span class="lp">❯</span> <span class="lc">loading modules</span> <span class="ls">✓</span></div>
-        <div class="lt-line" id="lt3" style="opacity:0"><span class="lp">❯</span> <span class="lc">connecting github api</span> <span class="ls">✓</span></div>
-        <div class="lt-line" id="lt4" style="opacity:0"><span class="lp">❯</span> <span class="lc">rendering experience</span> <span class="ls">✓</span></div>
-      </div>
-      <div class="loader-bar-wrap">
-        <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
-        <span class="loader-pct" id="loaderPct">0%</span>
-      </div>
-    </div>
-  </div>
-
-  <!-- Scroll Progress -->
-  <div class="scroll-bar" id="scrollBar"></div>
-
-  <!-- ═══════════════ NAVBAR ═══════════════ -->
-  <nav class="nav" id="nav">
-    <a href="#hero" class="nav-brand">
-      <span class="nb-mark">YK</span>
-      <span class="nb-dot">.</span>
-    </a>
-    <div class="nav-center" id="navLinks">
-      <a href="#about"        class="nl" data-label="About">About</a>
-      <a href="#skills"       class="nl" data-label="Skills">Skills</a>
-      <a href="#projects"     class="nl" data-label="Projects">Projects</a>
-      <a href="#github"       class="nl" data-label="GitHub">GitHub</a>
-      <a href="#achievements" class="nl" data-label="Wins">Wins</a>
-      <a href="#contact"      class="nl" data-label="Contact">Contact</a>
-    </div>
-    <div class="nav-right">
-      <a href="https://github.com/YogeshKumar445" target="_blank" class="nav-gh-btn">
-        <svg viewBox="0 0 24 24" fill="currentColor" width="16"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+<!-- ═══ NAVBAR ═══ -->
+<nav id="nav">
+  <div class="nav-in">
+    <a href="#hero" class="nav-logo">YK<span style="color:var(--cyan)">.</span></a>
+    <ul class="nav-links" id="navl">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#github">GitHub</a></li>
+      <li><a href="#achievements">Wins</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div style="display:flex;align-items:center;gap:10px">
+      <a href="https://github.com/YogeshKumar445" target="_blank" class="nav-gh">
+        <svg width="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
         GitHub
       </a>
-      <button class="hamburger" id="hamburger" aria-label="Menu">
-        <span></span><span></span><span></span>
-      </button>
+      <button class="hbg" id="hbg" onclick="toggleMob()"><span></span><span></span><span></span></button>
     </div>
-  </nav>
+  </div>
+</nav>
+<div id="mob">
+  <a href="#about" onclick="closeMob()">About</a>
+  <a href="#skills" onclick="closeMob()">Skills</a>
+  <a href="#projects" onclick="closeMob()">Projects</a>
+  <a href="#github" onclick="closeMob()">GitHub</a>
+  <a href="#achievements" onclick="closeMob()">Wins</a>
+  <a href="#contact" onclick="closeMob()">Contact</a>
+</div>
 
-  <!-- ═══════════════ HERO ═══════════════ -->
-  <section id="hero" class="hero">
-    <canvas id="heroCanvas"></canvas>
-    <div class="hero-noise"></div>
-
-    <!-- Floating Orbs -->
-    <div class="orb orb1"></div>
-    <div class="orb orb2"></div>
-    <div class="orb orb3"></div>
-
-    <div class="hero-inner">
-      <div class="hero-eyebrow">
-        <span class="status-pulse"></span>
-        <span>Open to Opportunities · Noida, India</span>
-      </div>
-
-      <h1 class="hero-name">
-        <span class="hn-word" data-word="Yogesh">Yogesh</span>
-        <span class="hn-word hn-outline" data-word="Kumar">Kumar</span>
-      </h1>
-
-      <div class="hero-role">
-        <span class="hr-slash">//</span>
-        <span class="hr-typed" id="heroTyped"></span>
-        <span class="hr-cursor">█</span>
-      </div>
-
-      <p class="hero-tagline">
-        B.Tech CS @ NIET · Full Stack · Java · 
-        <span class="ht-learning">Learning DevOps · Cloud · Blockchain</span>
-      </p>
-
-      <div class="hero-actions">
-        <a href="#projects" class="ha-primary">
-          <span class="ha-bg"></span>
-          <span class="ha-label">View Projects</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-        </a>
-        <a href="#contact" class="ha-secondary">Let's Talk</a>
-        <a href="https://github.com/YogeshKumar445" target="_blank" class="ha-icon" title="GitHub">
-          <svg viewBox="0 0 24 24" fill="currentColor" width="20"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-        </a>
-      </div>
-
-      <div class="hero-metrics">
-        <div class="hm-item">
-          <span class="hm-val" data-count="100">0</span><span class="hm-plus">+</span>
-          <span class="hm-key">LeetCode</span>
-        </div>
-        <div class="hm-sep"></div>
-        <div class="hm-item">
-          <span class="hm-val" data-count="3">0</span><span class="hm-plus">+</span>
-          <span class="hm-key">Projects</span>
-        </div>
-        <div class="hm-sep"></div>
-        <div class="hm-item">
-          <span class="hm-val" data-count="10">0</span><span class="hm-plus">+</span>
-          <span class="hm-key">Technologies</span>
-        </div>
-      </div>
+<!-- ═══ HERO ═══ -->
+<section id="hero">
+  <canvas id="hcv"></canvas>
+  <div class="hgrid"></div>
+  <div class="orb o1"></div>
+  <div class="orb o2"></div>
+  <div class="hi">
+    <div class="h-badge">
+      <span class="bdot"></span>
+      Available for Opportunities &nbsp;·&nbsp; Noida, India
     </div>
-
-    <div class="hero-scroll">
-      <div class="hs-line"></div>
-      <span>Scroll</span>
+    <h1 class="h-name">
+      <span class="ns">Yogesh</span>
+      <span class="no">Kumar</span>
+    </h1>
+    <div class="h-role">
+      <span style="color:rgba(0,229,255,.4);font-family:'JetBrains Mono',monospace">//</span>
+      <span id="typed" style="color:var(--cyan);font-family:'JetBrains Mono',monospace"></span>
+      <span class="blink" style="color:var(--cyan);font-family:'JetBrains Mono',monospace">█</span>
     </div>
-  </section>
+    <p class="h-sub">
+      B.Tech CS @ NIET &nbsp;·&nbsp; Full Stack &nbsp;·&nbsp; Java<br/>
+      <span style="font-family:'JetBrains Mono',monospace;color:var(--am);font-size:13px">📚 Learning: DevOps · Cloud · Blockchain</span>
+    </p>
+    <div class="h-cta">
+      <a href="#projects" class="btn-p">
+        <span>View Projects</span>
+        <svg width="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="#contact" class="btn-g">Let's Talk</a>
+      <a href="https://github.com/YogeshKumar445" target="_blank" class="btn-i">
+        <svg width="17" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+      </a>
+    </div>
+    <div class="h-stats">
+      <div style="text-align:center"><div><span class="stn counter" data-n="100">0</span><span style="color:var(--cyan);font-weight:700">+</span></div><span class="stl">LeetCode</span></div>
+      <div class="std"></div>
+      <div style="text-align:center"><div><span class="stn counter" data-n="3">0</span><span style="color:var(--cyan);font-weight:700">+</span></div><span class="stl">Projects</span></div>
+      <div class="std"></div>
+      <div style="text-align:center"><div><span class="stn counter" data-n="12">0</span><span style="color:var(--cyan);font-weight:700">+</span></div><span class="stl">Technologies</span></div>
+    </div>
+  </div>
+  <div class="scroll-h">
+    <div class="sla"></div>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.2);text-transform:uppercase;letter-spacing:.14em">scroll</span>
+  </div>
+</section>
 
-  <!-- ═══════════════ ABOUT ═══════════════ -->
-  <section id="about" class="section about">
-    <div class="wrap">
-      <div class="section-header reveal">
-        <span class="sh-tag">01 / About</span>
-        <h2 class="sh-title">Behind the code<span class="accent">.</span></h2>
-      </div>
-      <div class="about-layout">
-        <div class="about-left reveal">
-          <div class="al-card">
-            <div class="alc-avatar">
-              <div class="alca-ring ring1"></div>
-              <div class="alca-ring ring2"></div>
-              <div class="alca-core">YK</div>
-            </div>
-            <div class="alc-meta">
-              <h3>Yogesh Kumar</h3>
-              <p>Full Stack Developer</p>
-              <div class="alc-badges">
-                <span>Java</span><span>MERN</span><span>DevOps</span>
-              </div>
-            </div>
-            <div class="alc-stats">
-              <div><strong>NIET</strong><small>B.Tech CS</small></div>
-              <div><strong>2025</strong><small>Batch</small></div>
-              <div><strong>India</strong><small>Noida, UP</small></div>
-            </div>
+<!-- ═══ ABOUT ═══ -->
+<section id="about" class="sec" style="background:#0a0d18">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-tag">01 / About</span>
+      <h2 class="sec-title">Behind the code<span style="color:var(--cyan)">.</span></h2>
+    </div>
+    <div class="ag">
+      <div class="rv">
+        <div class="acard">
+          <div class="avw"><div class="avr1"></div><div class="avr2"></div><div class="avc">YK</div></div>
+          <h3 style="font-family:'Syne',sans-serif;font-size:19px;font-weight:700;margin-top:16px;margin-bottom:4px">Yogesh Kumar</h3>
+          <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--cyan);margin-bottom:14px">Full Stack Developer</p>
+          <div style="display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin-bottom:18px">
+            <span class="cbadge">Java</span><span class="cbadge">MERN</span><span class="cbadge">DevOps</span>
           </div>
-        </div>
-        <div class="about-right reveal" style="--delay:150ms">
-          <p class="ar-lead">I'm a <strong>Computer Science student</strong> at Noida Institute of Engineering and Technology with a passion for building products that live at the intersection of great engineering and great design.</p>
-          <p class="ar-body">My core expertise lies in <span class="inline-chip">Java</span> backend development and <span class="inline-chip">MERN</span> full-stack applications. I'm currently expanding into <span class="inline-chip">DevOps</span>, <span class="inline-chip">Cloud Architecture</span>, and <span class="inline-chip">Blockchain</span> to build more scalable, production-ready systems.</p>
-          <div class="ar-interests">
-            <div class="ari-row">
-              <div class="ari-item"><span>⚙️</span> Full Stack Dev</div>
-              <div class="ari-item"><span>☕</span> Java Development</div>
-              <div class="ari-item"><span>☁️</span> Cloud Computing</div>
-            </div>
-            <div class="ari-row">
-              <div class="ari-item"><span>🔗</span> Blockchain</div>
-              <div class="ari-item"><span>🚀</span> DevOps</div>
-              <div class="ari-item"><span>🧠</span> DSA & Algorithms</div>
-            </div>
+          <div class="acst">
+            <div><strong>NIET</strong><small>College</small></div>
+            <div><strong>2025</strong><small>Batch</small></div>
+            <div><strong>India</strong><small>Location</small></div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════ SKILLS ═══════════════ -->
-  <section id="skills" class="section skills">
-    <div class="wrap">
-      <div class="section-header reveal">
-        <span class="sh-tag">02 / Skills</span>
-        <h2 class="sh-title">Tech Arsenal<span class="accent">.</span></h2>
-      </div>
-      <div class="skills-layout">
-        <div class="skills-bars reveal">
-          <h3 class="sk-sub">Languages & Frameworks</h3>
-          <div class="skill-list">
-            <div class="skill-row">
-              <div class="sr-info"><span>Java</span><span class="sr-pct">90%</span></div>
-              <div class="sr-track"><div class="sr-fill" data-w="90" style="--clr:#f89820"></div></div>
-            </div>
-            <div class="skill-row">
-              <div class="sr-info"><span>JavaScript</span><span class="sr-pct">78%</span></div>
-              <div class="sr-track"><div class="sr-fill" data-w="78" style="--clr:#f0db4f"></div></div>
-            </div>
-            <div class="skill-row">
-              <div class="sr-info"><span>Python</span><span class="sr-pct">72%</span></div>
-              <div class="sr-track"><div class="sr-fill" data-w="72" style="--clr:#3572a5"></div></div>
-            </div>
-            <div class="skill-row">
-              <div class="sr-info"><span>HTML / CSS</span><span class="sr-pct">88%</span></div>
-              <div class="sr-track"><div class="sr-fill" data-w="88" style="--clr:#e34c26"></div></div>
-            </div>
-            <div class="skill-row">
-              <div class="sr-info"><span>Node.js / Express</span><span class="sr-pct">75%</span></div>
-              <div class="sr-track"><div class="sr-fill" data-w="75" style="--clr:#68a063"></div></div>
-            </div>
-            <div class="skill-row">
-              <div class="sr-info"><span>MongoDB</span><span class="sr-pct">70%</span></div>
-              <div class="sr-track"><div class="sr-fill" data-w="70" style="--clr:#4db33d"></div></div>
-            </div>
-            <div class="skill-row">
-              <div class="sr-info"><span>SQL</span><span class="sr-pct">68%</span></div>
-              <div class="sr-track"><div class="sr-fill" data-w="68" style="--clr:#00758f"></div></div>
-            </div>
-          </div>
+      <div class="rv" style="--d:120ms">
+        <p class="alead">I'm a <strong style="color:var(--cyan)">Computer Science student</strong> at Noida Institute of Engineering and Technology, passionate about building full-stack products.</p>
+        <p class="abody">Core strengths in <span class="itag">Java</span> backend and <span class="itag">MERN</span> full-stack. Expanding into <span class="itag v">DevOps</span>, <span class="itag v">Cloud</span>, and <span class="itag a">Blockchain</span>.</p>
+        <div class="intg">
+          <div class="inti"><span>⚙️</span>Full Stack</div><div class="inti"><span>☕</span>Java Dev</div>
+          <div class="inti"><span>☁️</span>Cloud</div><div class="inti"><span>🔗</span>Blockchain</div>
+          <div class="inti"><span>🚀</span>DevOps</div><div class="inti"><span>🧠</span>DSA</div>
         </div>
-        <div class="skills-right reveal" style="--delay:100ms">
-          <h3 class="sk-sub">Tools & Platforms</h3>
-          <div class="tool-grid">
-            <div class="tool-chip" data-tip="Version Control"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg><span>Git/GitHub</span></div>
-            <div class="tool-chip"><span class="tc-emoji">🐧</span><span>Linux</span></div>
-            <div class="tool-chip"><span class="tc-emoji">☁️</span><span>Cloud</span></div>
-            <div class="tool-chip"><span class="tc-emoji">🐳</span><span>Docker</span></div>
-            <div class="tool-chip"><span class="tc-emoji">🔗</span><span>REST APIs</span></div>
-            <div class="tool-chip"><span class="tc-emoji">🧩</span><span>OOP / SOLID</span></div>
-            <div class="tool-chip"><span class="tc-emoji">📊</span><span>DBMS</span></div>
-            <div class="tool-chip"><span class="tc-emoji">🔐</span><span>Blockchain</span></div>
-            <div class="tool-chip"><span class="tc-emoji">⚡</span><span>DevOps</span></div>
-            <div class="tool-chip"><span class="tc-emoji">🤖</span><span>Agile</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ SKILLS ═══ -->
+<section id="skills" class="sec" style="background:#060810">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-tag">02 / Skills</span>
+      <h2 class="sec-title">Tech Arsenal<span style="color:var(--cyan)">.</span></h2>
+    </div>
+    <div class="skg">
+      <div class="rv">
+        <p class="sksub">Languages &amp; Frameworks</p>
+        <div class="skl">
+          <div class="ski" data-w="90"><div class="skm"><span>Java</span><span>90%</span></div><div class="skt"><div class="skf" style="--c:#f89820"></div></div></div>
+          <div class="ski" data-w="78"><div class="skm"><span>JavaScript</span><span>78%</span></div><div class="skt"><div class="skf" style="--c:#f0db4f"></div></div></div>
+          <div class="ski" data-w="72"><div class="skm"><span>Python</span><span>72%</span></div><div class="skt"><div class="skf" style="--c:#3572a5"></div></div></div>
+          <div class="ski" data-w="88"><div class="skm"><span>HTML / CSS</span><span>88%</span></div><div class="skt"><div class="skf" style="--c:#e34c26"></div></div></div>
+          <div class="ski" data-w="75"><div class="skm"><span>Node.js / Express</span><span>75%</span></div><div class="skt"><div class="skf" style="--c:#68a063"></div></div></div>
+          <div class="ski" data-w="70"><div class="skm"><span>MongoDB</span><span>70%</span></div><div class="skt"><div class="skf" style="--c:#4db33d"></div></div></div>
+          <div class="ski" data-w="68"><div class="skm"><span>SQL</span><span>68%</span></div><div class="skt"><div class="skf" style="--c:#00758f"></div></div></div>
+        </div>
+      </div>
+      <div class="rv" style="--d:100ms">
+        <p class="sksub">Tools &amp; Platforms</p>
+        <div class="ccloud">
+          <span class="tchip">Git/GitHub</span><span class="tchip">Linux</span><span class="tchip">Docker</span>
+          <span class="tchip">REST APIs</span><span class="tchip">OOP</span><span class="tchip">DBMS</span>
+          <span class="tchip">Blockchain</span><span class="tchip">DevOps</span><span class="tchip">Cloud</span>
+          <span class="tchip">DSA</span><span class="tchip">Agile</span><span class="tchip">OS</span>
+        </div>
+        <div class="tbox">
+          <div class="thdr">
+            <span class="td" style="background:#ef4444"></span>
+            <span class="td" style="background:#f59e0b"></span>
+            <span class="td" style="background:#10b981"></span>
+            <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,.2);margin-left:8px">yogesh@portfolio:~</span>
           </div>
-          <div class="skills-terminal">
-            <div class="st-header">
-              <div class="st-dots"><i></i><i></i><i></i></div>
-              <span>yogesh@portfolio:~</span>
-            </div>
-            <div class="st-body" id="terminalBody">
-              <div class="stb-line"><span class="stb-p">~</span> <span class="stb-cmd">whoami</span></div>
-              <div class="stb-line stb-out">yogesh — full stack developer</div>
-              <div class="stb-line"><span class="stb-p">~</span> <span class="stb-cmd">cat skills.json | jq '.level'</span></div>
-              <div class="stb-line stb-out">"senior-aspirant"</div>
-              <div class="stb-line"><span class="stb-p">~</span> <span class="stb-cmd">echo $STATUS</span></div>
-              <div class="stb-line stb-out stb-green">open_to_work=true</div>
-              <div class="stb-line"><span class="stb-p">~</span> <span class="stb-blink">█</span></div>
-            </div>
+          <div class="tbody">
+            <div class="tr"><span style="color:var(--cyan)">~</span><span style="color:rgba(255,255,255,.4)">whoami</span></div>
+            <div class="to">yogesh — full stack developer</div>
+            <div class="tr"><span style="color:var(--cyan)">~</span><span style="color:rgba(255,255,255,.4)">echo $STATUS</span></div>
+            <div class="to" style="color:var(--em)">open_to_work=true</div>
+            <div class="tr"><span style="color:var(--cyan)">~</span><span class="blink" style="color:var(--cyan)">█</span></div>
           </div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══════════════ PROJECTS ═══════════════ -->
-  <section id="projects" class="section projects">
-    <div class="wrap">
-      <div class="section-header reveal">
-        <span class="sh-tag">03 / Projects</span>
-        <h2 class="sh-title">Selected Work<span class="accent">.</span></h2>
-      </div>
-
-      <!-- Filter Bar -->
-      <div class="filter-bar reveal">
-        <button class="fb-btn active" data-filter="all">All</button>
-        <button class="fb-btn" data-filter="java">Java</button>
-        <button class="fb-btn" data-filter="web">Web</button>
-        <button class="fb-btn" data-filter="fullstack">Full Stack</button>
-      </div>
-
-      <div class="projects-grid" id="projectsGrid">
-        <!-- Project 01 -->
-        <article class="pcard" data-tags="web fullstack" data-tilt>
-          <div class="pcard-glow"></div>
-          <div class="pcard-inner">
-            <div class="pcard-top">
-              <div class="pcard-num">01</div>
-              <div class="pcard-actions">
-                <a href="https://github.com/YogeshKumar445/Smart-life-dashboard.git" target="_blank" class="pca-link" data-cursor="View">
-                  <svg viewBox="0 0 24 24" fill="currentColor" width="18"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                </a>
-              </div>
-            </div>
-            <div class="pcard-icon">📊</div>
-            <h3 class="pcard-title">Smart Life Dashboard</h3>
-            <p class="pcard-desc">Modular productivity dashboard integrating task management, health tracking, and personal finance into one unified interface.</p>
-            <div class="pcard-stack">
-              <span>HTML</span><span>CSS</span><span>JavaScript</span><span>APIs</span>
-            </div>
-            <div class="pcard-footer">
-              <div class="pcf-bar"><div class="pcf-fill" style="width:85%"></div></div>
-              <span class="pcf-label">85% complete</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 02 -->
-        <article class="pcard pcard-featured" data-tags="java" data-tilt>
-          <div class="pcard-glow"></div>
-          <div class="pcard-badge">Featured</div>
-          <div class="pcard-inner">
-            <div class="pcard-top">
-              <div class="pcard-num">02</div>
-              <div class="pcard-actions">
-                <a href="https://github.com/YogeshKumar445/Shooting_game.git" target="_blank" class="pca-link" data-cursor="View">
-                  <svg viewBox="0 0 24 24" fill="currentColor" width="18"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                </a>
-              </div>
-            </div>
-            <div class="pcard-icon">🎮</div>
-            <h3 class="pcard-title">Beat It — Java Shooter</h3>
-            <p class="pcard-desc">Java-based shooting game demonstrating advanced OOP principles, design patterns, and Swing GUI development.</p>
-            <div class="pcard-stack">
-              <span>Java</span><span>Swing</span><span>OOP</span><span>Design Patterns</span>
-            </div>
-            <div class="pcard-footer">
-              <div class="pcf-bar"><div class="pcf-fill" style="width:100%"></div></div>
-              <span class="pcf-label">Production ready</span>
-            </div>
-          </div>
-        </article>
-
-        <!-- Project 03 -->
-        <article class="pcard" data-tags="web fullstack" data-tilt>
-          <div class="pcard-glow"></div>
-          <div class="pcard-inner">
-            <div class="pcard-top">
-              <div class="pcard-num">03</div>
-              <div class="pcard-actions">
-                <a href="https://github.com/YogeshKumar445/Health_Coach.git" target="_blank" class="pca-link" data-cursor="View">
-                  <svg viewBox="0 0 24 24" fill="currentColor" width="18"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-                </a>
-              </div>
-            </div>
-            <div class="pcard-icon">🏃</div>
-            <h3 class="pcard-title">Health Coach App</h3>
-            <p class="pcard-desc">Web application delivering personalized health guidance, workout tracking, and wellness monitoring features.</p>
-            <div class="pcard-stack">
-              <span>Node.js</span><span>HTML</span><span>CSS</span><span>JS</span>
-            </div>
-            <div class="pcard-footer">
-              <div class="pcf-bar"><div class="pcf-fill" style="width:90%"></div></div>
-              <span class="pcf-label">90% complete</span>
-            </div>
-          </div>
-        </article>
-      </div>
+<!-- ═══ PROJECTS ═══ -->
+<section id="projects" class="sec" style="background:#0a0d18">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-tag">03 / Projects</span>
+      <h2 class="sec-title">Selected Work<span style="color:var(--cyan)">.</span></h2>
     </div>
-  </section>
-
-  <!-- ═══════════════ GITHUB API ═══════════════ -->
-  <section id="github" class="section github-sec">
-    <div class="wrap">
-      <div class="section-header reveal">
-        <span class="sh-tag">04 / GitHub</span>
-        <h2 class="sh-title">Live Repositories<span class="accent">.</span></h2>
-        <p class="sh-sub">Pulled directly from the GitHub API in real-time.</p>
-      </div>
-
-      <div class="gh-profile-bar reveal">
-        <div class="ghpb-avatar">
-          <img src="https://github.com/YogeshKumar445.png" alt="Yogesh Kumar" id="ghAvatar" onerror="this.src='https://avatars.githubusercontent.com/u/0'" />
-        </div>
-        <div class="ghpb-info">
-          <strong id="ghName">YogeshKumar445</strong>
-          <span id="ghBio">Loading GitHub profile...</span>
-        </div>
-        <div class="ghpb-stats">
-          <div><span id="ghRepos">—</span><small>Repos</small></div>
-          <div><span id="ghFollowers">—</span><small>Followers</small></div>
-          <div><span id="ghFollowing">—</span><small>Following</small></div>
-        </div>
-        <a href="https://github.com/YogeshKumar445" target="_blank" class="ghpb-btn">View Profile ↗</a>
-      </div>
-
-      <div class="repo-grid" id="repoGrid">
-        <div class="repo-loading" id="repoLoading">
-          <div class="rl-spinner"></div>
-          <span>Fetching repositories...</span>
-        </div>
-      </div>
+    <div class="fb-wrap rv">
+      <button class="fb active" data-f="all">All</button>
+      <button class="fb" data-f="java">Java</button>
+      <button class="fb" data-f="web">Web</button>
+      <button class="fb" data-f="fullstack">Full Stack</button>
     </div>
-  </section>
-
-  <!-- ═══════════════ PROFILES ═══════════════ -->
-  <section id="profiles" class="section profiles">
-    <div class="wrap">
-      <div class="section-header reveal">
-        <span class="sh-tag">05 / Profiles</span>
-        <h2 class="sh-title">Find Me Online<span class="accent">.</span></h2>
-      </div>
-      <div class="profile-row">
-        <a href="https://github.com/YogeshKumar445" target="_blank" class="prof-card reveal" data-tilt>
-          <div class="prof-bg" style="--c1:#24292e;--c2:#444d56"></div>
-          <svg class="prof-logo" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
-          <span class="prof-name">GitHub</span>
-          <span class="prof-handle">@YogeshKumar445</span>
-          <span class="prof-arrow">↗</span>
-        </a>
-        <a href="https://www.linkedin.com/in/yogesh-kumar-977164326" target="_blank" class="prof-card reveal" data-tilt style="--delay:80ms">
-          <div class="prof-bg" style="--c1:#0077b5;--c2:#005885"></div>
-          <svg class="prof-logo" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          <span class="prof-name">LinkedIn</span>
-          <span class="prof-handle">yogesh-kumar</span>
-          <span class="prof-arrow">↗</span>
-        </a>
-        <a href="https://leetcode.com/Yogesh445-yk/" target="_blank" class="prof-card reveal" data-tilt style="--delay:160ms">
-          <div class="prof-bg" style="--c1:#ffa116;--c2:#b87000"></div>
-          <svg class="prof-logo" viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>
-          <span class="prof-name">LeetCode</span>
-          <span class="prof-handle">100+ problems</span>
-          <span class="prof-arrow">↗</span>
-        </a>
-      </div>
+    <div class="pgg" id="pgrid">
+      <article class="pc rv" data-tags="web fullstack" data-tilt>
+        <div class="pcgl" style="background:radial-gradient(circle at 50% 0%,rgba(0,229,255,.09),transparent 65%)"></div>
+        <div class="pcb">
+          <div class="pctp"><span class="pcn">01</span><a href="https://github.com/YogeshKumar445/Smart-life-dashboard.git" target="_blank" class="pcl">↗</a></div>
+          <div style="font-size:30px">📊</div>
+          <h3 class="pct">Smart Life Dashboard</h3>
+          <p class="pcd">Modular productivity dashboard integrating task, health, and finance modules into one unified interface.</p>
+          <div class="pcst"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
+          <div class="pcp"><div class="ppb"><div class="ppf" style="width:85%"></div></div><span class="ppl">85%</span></div>
+        </div>
+      </article>
+      <article class="pc pcf rv" data-tags="java" data-tilt style="--d:80ms">
+        <div class="pcgl" style="background:radial-gradient(circle at 50% 0%,rgba(0,229,255,.09),transparent 65%)"></div>
+        <span class="fbadge">Featured</span>
+        <div class="pcb">
+          <div class="pctp"><span class="pcn">02</span><a href="https://github.com/YogeshKumar445/Shooting_game.git" target="_blank" class="pcl">↗</a></div>
+          <div style="font-size:30px">🎮</div>
+          <h3 class="pct">Beat It — Java Shooter</h3>
+          <p class="pcd">Java-based shooting game with advanced OOP principles, design patterns, and Swing GUI development.</p>
+          <div class="pcst"><span>Java</span><span>Swing</span><span>OOP</span></div>
+          <div class="pcp"><div class="ppb"><div class="ppf" style="width:100%"></div></div><span class="ppl">100%</span></div>
+        </div>
+      </article>
+      <article class="pc rv" data-tags="web fullstack" data-tilt style="--d:160ms">
+        <div class="pcgl" style="background:radial-gradient(circle at 50% 0%,rgba(0,229,255,.09),transparent 65%)"></div>
+        <div class="pcb">
+          <div class="pctp"><span class="pcn">03</span><a href="https://github.com/YogeshKumar445/Health_Coach.git" target="_blank" class="pcl">↗</a></div>
+          <div style="font-size:30px">🏃</div>
+          <h3 class="pct">Health Coach App</h3>
+          <p class="pcd">Web application providing personalized health guidance and real-time wellness monitoring features.</p>
+          <div class="pcst"><span>Node.js</span><span>HTML</span><span>CSS</span></div>
+          <div class="pcp"><div class="ppb"><div class="ppf" style="width:90%"></div></div><span class="ppl">90%</span></div>
+        </div>
+      </article>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══════════════ ACHIEVEMENTS ═══════════════ -->
-  <section id="achievements" class="section achievements">
-    <div class="wrap">
-      <div class="section-header reveal">
-        <span class="sh-tag">06 / Achievements</span>
-        <h2 class="sh-title">Milestones<span class="accent">.</span></h2>
+<!-- ═══ GITHUB ═══ -->
+<section id="github" class="sec" style="background:#060810">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-tag">04 / GitHub</span>
+      <h2 class="sec-title">Live Repositories<span style="color:var(--cyan)">.</span></h2>
+      <p style="font-family:'JetBrains Mono',monospace;font-size:13px;color:rgba(255,255,255,.3);margin-top:8px">Fetched live from GitHub API</p>
+    </div>
+    <div class="ghbar rv">
+      <img id="ghav" src="https://github.com/YogeshKumar445.png" alt="avatar" class="ghav" onerror="this.src='https://avatars.githubusercontent.com/u/0'"/>
+      <div style="flex:1;min-width:0">
+        <strong id="ghn" style="font-family:'Syne',sans-serif;font-size:17px;font-weight:700;display:block">YogeshKumar445</strong>
+        <span id="ghb" style="font-family:'JetBrains Mono',monospace;font-size:12px;color:rgba(255,255,255,.3)">Full Stack Developer</span>
       </div>
-      <div class="ach-list">
-        <div class="ach-item reveal">
-          <div class="ach-idx">01</div>
-          <div class="ach-ico">🏆</div>
-          <div class="ach-content">
-            <h3>100+ LeetCode Problems Solved</h3>
-            <p>Consistently grinding algorithmic challenges covering arrays, trees, graphs, DP — sharpening problem-solving fundamentals.</p>
-          </div>
-          <div class="ach-bar"></div>
+      <div class="ghst">
+        <div><span id="ghr" style="font-family:'Syne',sans-serif;font-size:22px;font-weight:700;color:var(--cyan)">—</span><small>Repos</small></div>
+        <div><span id="ghf" style="font-family:'Syne',sans-serif;font-size:22px;font-weight:700;color:var(--cyan)">—</span><small>Followers</small></div>
+      </div>
+      <a href="https://github.com/YogeshKumar445" target="_blank" class="ghvb">View Profile ↗</a>
+    </div>
+    <div class="rgg" id="rgg">
+      <div id="rload" class="rload"><div class="rspin"></div><span>Fetching repositories...</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ PROFILES ═══ -->
+<section id="profiles" class="sec" style="background:#0a0d18">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-tag">05 / Profiles</span>
+      <h2 class="sec-title">Find Me Online<span style="color:var(--cyan)">.</span></h2>
+    </div>
+    <div class="prfg">
+      <a href="https://github.com/YogeshKumar445" target="_blank" class="prfc rv" data-tilt>
+        <div class="prfbg" style="--c1:#24292e;--c2:#444d56"></div>
+        <svg class="prfic" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        <span class="prfn">GitHub</span><span class="prfh">@YogeshKumar445</span><span class="prfa">↗</span>
+      </a>
+      <a href="https://www.linkedin.com/in/yogesh-kumar-977164326" target="_blank" class="prfc rv" data-tilt style="--d:80ms">
+        <div class="prfbg" style="--c1:#0077b5;--c2:#005885"></div>
+        <svg class="prfic" style="color:#0077b5" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        <span class="prfn">LinkedIn</span><span class="prfh">yogesh-kumar</span><span class="prfa">↗</span>
+      </a>
+      <a href="https://leetcode.com/Yogesh445-yk/" target="_blank" class="prfc rv" data-tilt style="--d:160ms">
+        <div class="prfbg" style="--c1:#ffa116;--c2:#b87000"></div>
+        <svg class="prfic" style="color:#ffa116" viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>
+        <span class="prfn">LeetCode</span><span class="prfh">100+ Problems</span><span class="prfa">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ ACHIEVEMENTS ═══ -->
+<section id="achievements" class="sec" style="background:#060810">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-tag">06 / Achievements</span>
+      <h2 class="sec-title">Milestones<span style="color:var(--cyan)">.</span></h2>
+    </div>
+    <div class="achl">
+      <div class="achi rv"><div class="achb"></div><span class="achx">01</span><span class="achic">🏆</span><div><h3 class="acht">100+ LeetCode Problems Solved</h3><p class="achd">Grinding arrays, trees, graphs, and dynamic programming consistently.</p></div></div>
+      <div class="achi rv" style="--d:80ms"><div class="achb"></div><span class="achx">02</span><span class="achic">🔥</span><div><h3 class="acht">Hackathon Participant</h3><p class="achd">Competed in multiple hackathons, shipping under pressure with cross-functional teams.</p></div></div>
+      <div class="achi rv" style="--d:160ms"><div class="achb"></div><span class="achx">03</span><span class="achic">🛠️</span><div><h3 class="acht">Multiple Software Projects Deployed</h3><p class="achd">Full-stack applications across health-tech, gaming, and productivity domains.</p></div></div>
+      <div class="achi rv" style="--d:240ms"><div class="achb"></div><span class="achx">04</span><span class="achic">📚</span><div><h3 class="acht">Continuous Learning</h3><p class="achd">Studying DevOps, Cloud Architecture (AWS/GCP), and Blockchain smart contracts.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CONTACT ═══ -->
+<section id="contact" class="sec" style="background:#0a0d18">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="sec-tag">07 / Contact</span>
+      <h2 class="sec-title">Let's Build<span style="color:var(--cyan)">.</span></h2>
+      <p style="color:rgba(255,255,255,.4);margin-top:8px">Have a project, opportunity, or just want to say hi?</p>
+    </div>
+    <div class="cg">
+      <div class="rv">
+        <form id="cf" class="cf" novalidate>
+          <div class="fg"><input type="text" id="fn" placeholder=" " required/><label for="fn">Your Name</label><span class="fl"></span></div>
+          <div class="fg"><input type="email" id="fe" placeholder=" " required/><label for="fe">Email Address</label><span class="fl"></span></div>
+          <div class="fg"><textarea id="fm" rows="5" placeholder=" " required></textarea><label for="fm">Message</label><span class="fl"></span></div>
+          <button type="submit" class="cfbtn" id="cfbtn">
+            <span id="cfbtxt">Send Message</span>
+            <svg width="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+          </button>
+        </form>
+        <div id="cfsuc" class="cfsuc">
+          <div class="cfw">✓</div>
+          <strong style="font-family:'Syne',sans-serif;font-size:20px;color:var(--em)">Message Sent!</strong>
+          <p style="font-size:14px;color:rgba(255,255,255,.4)">I'll get back to you within 24 hours.</p>
         </div>
-        <div class="ach-item reveal" style="--delay:80ms">
-          <div class="ach-idx">02</div>
-          <div class="ach-ico">🔥</div>
-          <div class="ach-content">
-            <h3>Hackathon Participant</h3>
-            <p>Competed in multiple hackathons — shipping prototypes under pressure and collaborating with cross-functional teams.</p>
-          </div>
-          <div class="ach-bar"></div>
-        </div>
-        <div class="ach-item reveal" style="--delay:160ms">
-          <div class="ach-idx">03</div>
-          <div class="ach-ico">🛠️</div>
-          <div class="ach-content">
-            <h3>Multiple Software Projects Deployed</h3>
-            <p>Built and shipped full-stack applications spanning health-tech, gaming, and productivity domains with real users.</p>
-          </div>
-          <div class="ach-bar"></div>
-        </div>
-        <div class="ach-item reveal" style="--delay:240ms">
-          <div class="ach-idx">04</div>
-          <div class="ach-ico">📚</div>
-          <div class="ach-content">
-            <h3>Continuous Learning Path</h3>
-            <p>Actively studying DevOps pipelines, Cloud Architecture (AWS/GCP), and Blockchain smart contract development.</p>
-          </div>
-          <div class="ach-bar"></div>
+      </div>
+      <div class="rv ci" style="--d:100ms">
+        <div class="cii"><span>📍</span><div><strong>Location</strong><span>Noida, Uttar Pradesh, India</span></div></div>
+        <div class="cii"><span>🎓</span><div><strong>College</strong><span>NIET — B.Tech CS</span></div></div>
+        <div class="cii"><span>💼</span><div><strong>Status</strong><span style="color:var(--em)">Open to Opportunities</span></div></div>
+        <div class="cii"><span>⚡</span><div><strong>Response</strong><span>Within 24 hours</span></div></div>
+        <div class="csoc">
+          <a href="https://github.com/YogeshKumar445" target="_blank">GH</a>
+          <a href="https://www.linkedin.com/in/yogesh-kumar-977164326" target="_blank">LI</a>
+          <a href="https://leetcode.com/Yogesh445-yk/" target="_blank">LC</a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ═══════════════ CONTACT ═══════════════ -->
-  <section id="contact" class="section contact">
-    <div class="wrap">
-      <div class="section-header reveal">
-        <span class="sh-tag">07 / Contact</span>
-        <h2 class="sh-title">Let's Build<span class="accent">.</span></h2>
-        <p class="sh-sub">Have a project, opportunity, or just want to say hi?</p>
-      </div>
-      <div class="contact-layout">
-        <div class="contact-form-wrap reveal">
-          <form id="contactForm" class="cf" novalidate>
-            <div class="cf-group">
-              <input type="text" id="cfName" placeholder=" " required />
-              <label for="cfName">Your Name</label>
-              <span class="cf-focus-line"></span>
-            </div>
-            <div class="cf-group">
-              <input type="email" id="cfEmail" placeholder=" " required />
-              <label for="cfEmail">Email Address</label>
-              <span class="cf-focus-line"></span>
-            </div>
-            <div class="cf-group">
-              <textarea id="cfMsg" placeholder=" " rows="5" required></textarea>
-              <label for="cfMsg">Message</label>
-              <span class="cf-focus-line"></span>
-            </div>
-            <button type="submit" class="cf-submit" id="cfSubmit">
-              <span class="cfs-text">Send Message</span>
-              <span class="cfs-icon">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-              </span>
-            </button>
-          </form>
-          <div class="cf-success" id="cfSuccess">
-            <div class="cfs-check">✓</div>
-            <strong>Message sent!</strong>
-            <p>I'll get back to you within 24 hours.</p>
-          </div>
-        </div>
-        <div class="contact-info reveal" style="--delay:100ms">
-          <div class="ci-item">
-            <span class="ci-icon">📍</span>
-            <div><strong>Location</strong><span>Noida, Uttar Pradesh, India</span></div>
-          </div>
-          <div class="ci-item">
-            <span class="ci-icon">🎓</span>
-            <div><strong>College</strong><span>NIET — B.Tech Computer Science</span></div>
-          </div>
-          <div class="ci-item">
-            <span class="ci-icon">💼</span>
-            <div><strong>Status</strong><span class="ci-open">Open to Opportunities</span></div>
-          </div>
-          <div class="ci-item">
-            <span class="ci-icon">⚡</span>
-            <div><strong>Response Time</strong><span>Within 24 hours</span></div>
-          </div>
-          <div class="ci-social">
-            <a href="https://github.com/YogeshKumar445" target="_blank" class="cis-link">GH</a>
-            <a href="https://www.linkedin.com/in/yogesh-kumar-977164326" target="_blank" class="cis-link">LI</a>
-            <a href="https://leetcode.com/Yogesh445-yk/" target="_blank" class="cis-link">LC</a>
-          </div>
-        </div>
-      </div>
+<!-- FOOTER -->
+<footer>
+  <div class="wrap" style="display:flex;flex-direction:column;align-items:center;gap:10px">
+    <span style="font-family:'Syne',sans-serif;font-size:28px;font-weight:900;letter-spacing:-1px">YK<span style="color:var(--cyan)">.</span></span>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:rgba(255,255,255,.25)">Full Stack · Java · MERN · DevOps</p>
+    <div style="display:flex;gap:24px;margin-top:4px">
+      <a href="https://github.com/YogeshKumar445" target="_blank" class="ftl">GitHub</a>
+      <a href="https://www.linkedin.com/in/yogesh-kumar-977164326" target="_blank" class="ftl">LinkedIn</a>
+      <a href="https://leetcode.com/Yogesh445-yk/" target="_blank" class="ftl">LeetCode</a>
     </div>
-  </section>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:11px;color:rgba(255,255,255,.15)">© 2025 Yogesh Kumar · Built with ❤️ &amp; ☕</p>
+  </div>
+</footer>
 
-  <!-- ═══════════════ FOOTER ═══════════════ -->
-  <footer class="footer">
-    <div class="footer-noise"></div>
-    <div class="wrap footer-inner">
-      <div class="fi-brand">
-        <span class="fi-logo">YK<span class="accent">.</span></span>
-        <p>Full Stack Developer · Java · MERN · DevOps</p>
-      </div>
-      <div class="fi-links">
-        <a href="https://github.com/YogeshKumar445" target="_blank">GitHub</a>
-        <a href="https://www.linkedin.com/in/yogesh-kumar-977164326" target="_blank">LinkedIn</a>
-        <a href="https://leetcode.com/Yogesh445-yk/" target="_blank">LeetCode</a>
-      </div>
-      <p class="fi-copy">© 2025 Yogesh Kumar. Crafted with ❤️ &amp; ☕</p>
-    </div>
-  </footer>
+<script>
+// ── Cursor ──
+(function(){
+  const d=document.getElementById('cdot'),r=document.getElementById('cring');
+  if(!d)return;
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;d.style.left=mx+'px';d.style.top=my+'px'});
+  (function t(){rx+=(mx-rx)*.13;ry+=(my-ry)*.13;r.style.left=rx+'px';r.style.top=ry+'px';requestAnimationFrame(t)})();
+  document.querySelectorAll('a,button,.tchip,.pc,.prfc,.achi,.inti').forEach(el=>{
+    el.addEventListener('mouseenter',()=>r.classList.add('big'));
+    el.addEventListener('mouseleave',()=>r.classList.remove('big'));
+  });
+})();
 
-  <script src="script.js"></script>
+// ── Particles ──
+(function(){
+  const cv=document.getElementById('hcv');if(!cv)return;
+  const ctx=cv.getContext('2d');
+  let W,H,pts=[];
+  let mx=innerWidth/2,my=innerHeight/2;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY});
+  function resize(){W=cv.width=cv.offsetWidth;H=cv.height=cv.offsetHeight;build()}
+  window.addEventListener('resize',resize);resize();
+  function build(){const n=Math.min(Math.floor(W*H/7000),120);pts=Array.from({length:n},()=>({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35,a:Math.random()*.35+.08,s:Math.random()*1.2+.3}))}
+  function frame(){
+    ctx.clearRect(0,0,W,H);
+    pts.forEach(p=>{
+      const dx=p.x-mx,dy=p.y-my,d=Math.sqrt(dx*dx+dy*dy);
+      if(d<110&&d>0){const f=(110-d)/110;p.vx+=(dx/d)*f*.4;p.vy+=(dy/d)*f*.4}
+      p.vx*=.98;p.vy*=.98;p.x+=p.vx;p.y+=p.vy;
+      if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;
+      ctx.beginPath();ctx.arc(p.x,p.y,p.s,0,Math.PI*2);ctx.fillStyle=`rgba(0,229,255,${p.a})`;ctx.fill();
+    });
+    for(let i=0;i<pts.length;i++)for(let j=i+1;j<pts.length;j++){
+      const dx=pts[i].x-pts[j].x,dy=pts[i].y-pts[j].y,d=Math.sqrt(dx*dx+dy*dy);
+      if(d<100){ctx.beginPath();ctx.moveTo(pts[i].x,pts[i].y);ctx.lineTo(pts[j].x,pts[j].y);ctx.strokeStyle=`rgba(0,229,255,${.12*(1-d/100)})`;ctx.lineWidth=.5;ctx.stroke()}
+    }
+    requestAnimationFrame(frame);
+  }
+  frame();
+})();
+
+// ── Typed ──
+(function(){
+  const el=document.getElementById('typed');if(!el)return;
+  const ph=['Full Stack Developer','Java Engineer','MERN Stack Builder','Problem Solver','DevOps Learner'];
+  let pi=0,ci=0,del=false;
+  function t(){
+    const p=ph[pi];
+    el.textContent=del?p.slice(0,ci--):p.slice(0,ci++);
+    let d=del?55:90;
+    if(!del&&ci===p.length+1){d=2000;del=true}
+    else if(del&&ci<0){del=false;ci=0;pi=(pi+1)%ph.length;d=380}
+    setTimeout(t,d);
+  }
+  t();
+})();
+
+// ── Counters ──
+(function(){
+  const obs=new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(!e.isIntersecting)return;
+      const el=e.target,end=+el.dataset.n;let c=0;
+      const iv=setInterval(()=>{c=Math.min(c+end/90,end);el.textContent=Math.floor(c);if(c>=end)clearInterval(iv)},16);
+      obs.unobserve(el);
+    });
+  },{threshold:.5});
+  document.querySelectorAll('.counter').forEach(el=>obs.observe(el));
+})();
+
+// ── Navbar ──
+(function(){
+  const nav=document.getElementById('nav');
+  const links=document.querySelectorAll('#navl a');
+  const secs=document.querySelectorAll('section[id]');
+  window.addEventListener('scroll',()=>{
+    nav.classList.toggle('scrolled',window.scrollY>50);
+    let cur='';
+    secs.forEach(s=>{if(window.scrollY>=s.offsetTop-200)cur=s.id});
+    links.forEach(l=>l.classList.toggle('active',l.getAttribute('href')==='#'+cur));
+    document.getElementById('spb').style.width=(window.scrollY/(document.documentElement.scrollHeight-innerHeight)*100)+'%';
+  },{passive:true});
+})();
+
+// Mobile menu
+function toggleMob(){
+  const h=document.getElementById('hbg'),m=document.getElementById('mob');
+  h.classList.toggle('open');m.classList.toggle('open');
+}
+function closeMob(){
+  document.getElementById('hbg').classList.remove('open');
+  document.getElementById('mob').classList.remove('open');
+}
+
+// ── Reveal ──
+(function(){
+  const obs=new IntersectionObserver(es=>{
+    es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}});
+  },{threshold:.1});
+  document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+})();
+
+// ── Skill bars ──
+(function(){
+  const obs=new IntersectionObserver(es=>{
+    es.forEach(e=>{
+      if(!e.isIntersecting)return;
+      const f=e.target.querySelector('.skf'),w=e.target.dataset.w;
+      if(f&&w)setTimeout(()=>f.style.width=w+'%',200);
+      obs.unobserve(e.target);
+    });
+  },{threshold:.4});
+  document.querySelectorAll('.ski').forEach(el=>obs.observe(el));
+})();
+
+// ── 3D Tilt ──
+document.querySelectorAll('[data-tilt]').forEach(c=>{
+  c.addEventListener('mousemove',e=>{
+    const r=c.getBoundingClientRect();
+    const dx=(e.clientX-r.left-r.width/2)/(r.width/2);
+    const dy=(e.clientY-r.top-r.height/2)/(r.height/2);
+    c.style.transform=`perspective(900px) rotateX(${-dy*10}deg) rotateY(${dx*10}deg) scale(1.025)`;
+    c.style.boxShadow='0 24px 52px rgba(0,0,0,.5)';
+    const g=c.querySelector('.pcgl');
+    if(g){const px=((e.clientX-r.left)/r.width*100).toFixed(1),py=((e.clientY-r.top)/r.height*100).toFixed(1);g.style.background=`radial-gradient(circle at ${px}% ${py}%,rgba(0,229,255,.1),transparent 65%)`}
+  });
+  c.addEventListener('mouseleave',()=>{c.style.transform='';c.style.boxShadow='';const g=c.querySelector('.pcgl');if(g)g.style.background=''});
+});
+
+// ── Filter ──
+(function(){
+  const btns=document.querySelectorAll('.fb');
+  btns.forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      btns.forEach(b=>b.classList.remove('active'));
+      btn.classList.add('active');
+      const f=btn.dataset.f;
+      document.querySelectorAll('#pgrid .pc').forEach((c,i)=>{
+        const match=f==='all'||c.dataset.tags.includes(f);
+        c.classList.toggle('hide',!match);
+        c.style.transitionDelay=match?i*60+'ms':'0ms';
+      });
+    });
+  });
+})();
+
+// ── GitHub API ──
+(async function(){
+  const U='YogeshKumar445';
+  const LC={JavaScript:'#f0db4f',Java:'#f89820',Python:'#3572a5',HTML:'#e34c26',CSS:'#563d7c',TypeScript:'#3178c6',Shell:'#89e051'};
+  function esc(s){return String(s??'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+  // Profile
+  try{
+    const res=await fetch(`https://api.github.com/users/${U}`);
+    if(res.ok){
+      const p=await res.json();
+      const s=(id,v)=>{const el=document.getElementById(id);if(el)el.textContent=v};
+      s('ghn',p.name||p.login);s('ghb',p.bio||'Full Stack Developer');
+      s('ghr',p.public_repos);s('ghf',p.followers);
+      const av=document.getElementById('ghav');if(av&&p.avatar_url)av.src=p.avatar_url;
+    }
+  }catch(e){}
+  // Repos
+  const grid=document.getElementById('rgg'),load=document.getElementById('rload');
+  try{
+    const res=await fetch(`https://api.github.com/users/${U}/repos?sort=updated&per_page=9&type=public`);
+    if(!res.ok)throw new Error();
+    const repos=await res.json();
+    if(load)load.remove();
+    repos.sort((a,b)=>(b.stargazers_count-a.stargazers_count)||(new Date(b.updated_at)-new Date(a.updated_at)))
+    .slice(0,9).forEach((r,i)=>{
+      const c=LC[r.language]||'#6b7a8d';
+      const up=new Date(r.updated_at).toLocaleDateString('en-US',{month:'short',year:'numeric'});
+      const d=document.createElement('article');
+      d.className='rc';d.style.animationDelay=i*65+'ms';
+      d.innerHTML=`<div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px"><span class="rcn">${esc(r.name)}</span><a href="${esc(r.html_url)}" target="_blank" class="rcl">↗</a></div><p class="rcd">${esc(r.description||'No description.')}</p><div class="rcm">${r.language?`<span><span class="rld" style="background:${c}"></span>${esc(r.language)}</span>`:''} ${r.stargazers_count>0?`<span>★ ${r.stargazers_count}</span>`:''} <span style="margin-left:auto">${up}</span></div>`;
+      grid.appendChild(d);
+    });
+  }catch(e){
+    if(load)load.innerHTML=`<span style="font-family:'JetBrains Mono',monospace;font-size:13px;color:rgba(255,255,255,.3)">Repos unavailable · <a href="https://github.com/${U}" target="_blank" style="color:#00e5ff;text-decoration:underline">View on GitHub ↗</a></span>`;
+  }
+})();
+
+// ── Contact form ──
+(function(){
+  const form=document.getElementById('cf'),suc=document.getElementById('cfsuc'),btn=document.getElementById('cfbtn'),txt=document.getElementById('cfbtxt');
+  if(!form)return;
+  form.addEventListener('submit',async e=>{
+    e.preventDefault();
+    if(btn)btn.disabled=true;if(txt)txt.textContent='Sending...';
+    await new Promise(r=>setTimeout(r,1400));
+    form.style.display='none';
+    suc.style.display='flex';
+  });
+})();
+
+// ── Hero entrance ──
+window.addEventListener('load',()=>{
+  document.querySelectorAll('.hi > *').forEach((el,i)=>{
+    el.style.opacity='0';el.style.transform='translateY(24px)';
+    el.style.transition=`opacity .7s ease ${i*100}ms,transform .7s ease ${i*100}ms`;
+    setTimeout(()=>{el.style.opacity='1';el.style.transform='none'},100+i*100);
+  });
+});
+</script>
 </body>
 </html>
