@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yogesh Kumar — Senior Full Stack Developer</title>
+  <meta name="description" content="Portfolio of Yogesh Kumar — Full Stack Developer specializing in Java, MERN Stack, DevOps & Cloud." />
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cabinet+Grotesk:wght@400;500;700;800;900&family=JetBrains+Mono:wght@300;400;500&family=Satoshi:wght@400;500;700&display=swap" rel="stylesheet" />
+  <!-- Fallback fonts if Cabinet Grotesk doesn't load -->
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800;900&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body class="loading">
+
+  <!-- Page Transition Overlay -->
+  <div class="page-transition" id="pageTransition">
+    <div class="pt-line"></div>
+    <div class="pt-line"></div>
+    <div class="pt-line"></div>
+    <div class="pt-line"></div>
+    <div class="pt-line"></div>
+  </div>
+
+  <!-- Custom Cursor -->
+  <div class="cursor" id="cursor">
+    <div class="cursor-inner"></div>
+    <div class="cursor-text" id="cursorText"></div>
+  </div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <!-- Loader -->
+  <div class="loader" id="loader">
+    <div class="loader-bg-lines">
+      <div class="lbl" style="--i:0"></div>
+      <div class="lbl" style="--i:1"></div>
+      <div class="lbl" style="--i:2"></div>
+      <div class="lbl" style="--i:3"></div>
+      <div class="lbl" style="--i:4"></div>
+    </div>
+    <div class="loader-content">
+      <div class="loader-logo">YK<span>.</span></div>
+      <div class="loader-terminal">
+        <div class="lt-line" id="lt1"><span class="lp">❯</span> <span class="lt-cmd">initializing portfolio</span><span class="lt-cursor">_</span></div>
+        <div class="lt-line" id="lt2" style="opacity:0"><span class="lp">❯</span> <span class="lc">loading modules</span> <span class="ls">✓</span></div>
+        <div class="lt-line" id="lt3" style="opacity:0"><span class="lp">❯</span> <span class="lc">connecting github api</span> <span class="ls">✓</span></div>
+        <div class="lt-line" id="lt4" style="opacity:0"><span class="lp">❯</span> <span class="lc">rendering experience</span> <span class="ls">✓</span></div>
+      </div>
+      <div class="loader-bar-wrap">
+        <div class="loader-bar"><div class="loader-fill" id="loaderFill"></div></div>
+        <span class="loader-pct" id="loaderPct">0%</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scroll Progress -->
+  <div class="scroll-bar" id="scrollBar"></div>
+
+  <!-- ═══════════════ NAVBAR ═══════════════ -->
+  <nav class="nav" id="nav">
+    <a href="#hero" class="nav-brand">
+      <span class="nb-mark">YK</span>
+      <span class="nb-dot">.</span>
+    </a>
+    <div class="nav-center" id="navLinks">
+      <a href="#about"        class="nl" data-label="About">About</a>
+      <a href="#skills"       class="nl" data-label="Skills">Skills</a>
+      <a href="#projects"     class="nl" data-label="Projects">Projects</a>
+      <a href="#github"       class="nl" data-label="GitHub">GitHub</a>
+      <a href="#achievements" class="nl" data-label="Wins">Wins</a>
+      <a href="#contact"      class="nl" data-label="Contact">Contact</a>
+    </div>
+    <div class="nav-right">
+      <a href="https://github.com/YogeshKumar445" target="_blank" class="nav-gh-btn">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="16"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        GitHub
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ═══════════════ HERO ═══════════════ -->
+  <section id="hero" class="hero">
+    <canvas id="heroCanvas"></canvas>
+    <div class="hero-noise"></div>
+
+    <!-- Floating Orbs -->
+    <div class="orb orb1"></div>
+    <div class="orb orb2"></div>
+    <div class="orb orb3"></div>
+
+    <div class="hero-inner">
+      <div class="hero-eyebrow">
+        <span class="status-pulse"></span>
+        <span>Open to Opportunities · Noida, India</span>
+      </div>
+
+      <h1 class="hero-name">
+        <span class="hn-word" data-word="Yogesh">Yogesh</span>
+        <span class="hn-word hn-outline" data-word="Kumar">Kumar</span>
+      </h1>
+
+      <div class="hero-role">
+        <span class="hr-slash">//</span>
+        <span class="hr-typed" id="heroTyped"></span>
+        <span class="hr-cursor">█</span>
+      </div>
+
+      <p class="hero-tagline">
+        B.Tech CS @ NIET · Full Stack · Java · 
+        <span class="ht-learning">Learning DevOps · Cloud · Blockchain</span>
+      </p>
+
+      <div class="hero-actions">
+        <a href="#projects" class="ha-primary">
+          <span class="ha-bg"></span>
+          <span class="ha-label">View Projects</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#contact" class="ha-secondary">Let's Talk</a>
+        <a href="https://github.com/YogeshKumar445" target="_blank" class="ha-icon" title="GitHub">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="20"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+        </a>
+      </div>
+
+      <div class="hero-metrics">
+        <div class="hm-item">
+          <span class="hm-val" data-count="100">0</span><span class="hm-plus">+</span>
+          <span class="hm-key">LeetCode</span>
+        </div>
+        <div class="hm-sep"></div>
+        <div class="hm-item">
+          <span class="hm-val" data-count="3">0</span><span class="hm-plus">+</span>
+          <span class="hm-key">Projects</span>
+        </div>
+        <div class="hm-sep"></div>
+        <div class="hm-item">
+          <span class="hm-val" data-count="10">0</span><span class="hm-plus">+</span>
+          <span class="hm-key">Technologies</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-scroll">
+      <div class="hs-line"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ABOUT ═══════════════ -->
+  <section id="about" class="section about">
+    <div class="wrap">
+      <div class="section-header reveal">
+        <span class="sh-tag">01 / About</span>
+        <h2 class="sh-title">Behind the code<span class="accent">.</span></h2>
+      </div>
+      <div class="about-layout">
+        <div class="about-left reveal">
+          <div class="al-card">
+            <div class="alc-avatar">
+              <div class="alca-ring ring1"></div>
+              <div class="alca-ring ring2"></div>
+              <div class="alca-core">YK</div>
+            </div>
+            <div class="alc-meta">
+              <h3>Yogesh Kumar</h3>
+              <p>Full Stack Developer</p>
+              <div class="alc-badges">
+                <span>Java</span><span>MERN</span><span>DevOps</span>
+              </div>
+            </div>
+            <div class="alc-stats">
+              <div><strong>NIET</strong><small>B.Tech CS</small></div>
+              <div><strong>2025</strong><small>Batch</small></div>
+              <div><strong>India</strong><small>Noida, UP</small></div>
+            </div>
+          </div>
+        </div>
+        <div class="about-right reveal" style="--delay:150ms">
+          <p class="ar-lead">I'm a <strong>Computer Science student</strong> at Noida Institute of Engineering and Technology with a passion for building products that live at the intersection of great engineering and great design.</p>
+          <p class="ar-body">My core expertise lies in <span class="inline-chip">Java</span> backend development and <span class="inline-chip">MERN</span> full-stack applications. I'm currently expanding into <span class="inline-chip">DevOps</span>, <span class="inline-chip">Cloud Architecture</span>, and <span class="inline-chip">Blockchain</span> to build more scalable, production-ready systems.</p>
+          <div class="ar-interests">
+            <div class="ari-row">
+              <div class="ari-item"><span>⚙️</span> Full Stack Dev</div>
+              <div class="ari-item"><span>☕</span> Java Development</div>
+              <div class="ari-item"><span>☁️</span> Cloud Computing</div>
+            </div>
+            <div class="ari-row">
+              <div class="ari-item"><span>🔗</span> Blockchain</div>
+              <div class="ari-item"><span>🚀</span> DevOps</div>
+              <div class="ari-item"><span>🧠</span> DSA & Algorithms</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ SKILLS ═══════════════ -->
+  <section id="skills" class="section skills">
+    <div class="wrap">
+      <div class="section-header reveal">
+        <span class="sh-tag">02 / Skills</span>
+        <h2 class="sh-title">Tech Arsenal<span class="accent">.</span></h2>
+      </div>
+      <div class="skills-layout">
+        <div class="skills-bars reveal">
+          <h3 class="sk-sub">Languages & Frameworks</h3>
+          <div class="skill-list">
+            <div class="skill-row">
+              <div class="sr-info"><span>Java</span><span class="sr-pct">90%</span></div>
+              <div class="sr-track"><div class="sr-fill" data-w="90" style="--clr:#f89820"></div></div>
+            </div>
+            <div class="skill-row">
+              <div class="sr-info"><span>JavaScript</span><span class="sr-pct">78%</span></div>
+              <div class="sr-track"><div class="sr-fill" data-w="78" style="--clr:#f0db4f"></div></div>
+            </div>
+            <div class="skill-row">
+              <div class="sr-info"><span>Python</span><span class="sr-pct">72%</span></div>
+              <div class="sr-track"><div class="sr-fill" data-w="72" style="--clr:#3572a5"></div></div>
+            </div>
+            <div class="skill-row">
+              <div class="sr-info"><span>HTML / CSS</span><span class="sr-pct">88%</span></div>
+              <div class="sr-track"><div class="sr-fill" data-w="88" style="--clr:#e34c26"></div></div>
+            </div>
+            <div class="skill-row">
+              <div class="sr-info"><span>Node.js / Express</span><span class="sr-pct">75%</span></div>
+              <div class="sr-track"><div class="sr-fill" data-w="75" style="--clr:#68a063"></div></div>
+            </div>
+            <div class="skill-row">
+              <div class="sr-info"><span>MongoDB</span><span class="sr-pct">70%</span></div>
+              <div class="sr-track"><div class="sr-fill" data-w="70" style="--clr:#4db33d"></div></div>
+            </div>
+            <div class="skill-row">
+              <div class="sr-info"><span>SQL</span><span class="sr-pct">68%</span></div>
+              <div class="sr-track"><div class="sr-fill" data-w="68" style="--clr:#00758f"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="skills-right reveal" style="--delay:100ms">
+          <h3 class="sk-sub">Tools & Platforms</h3>
+          <div class="tool-grid">
+            <div class="tool-chip" data-tip="Version Control"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg><span>Git/GitHub</span></div>
+            <div class="tool-chip"><span class="tc-emoji">🐧</span><span>Linux</span></div>
+            <div class="tool-chip"><span class="tc-emoji">☁️</span><span>Cloud</span></div>
+            <div class="tool-chip"><span class="tc-emoji">🐳</span><span>Docker</span></div>
+            <div class="tool-chip"><span class="tc-emoji">🔗</span><span>REST APIs</span></div>
+            <div class="tool-chip"><span class="tc-emoji">🧩</span><span>OOP / SOLID</span></div>
+            <div class="tool-chip"><span class="tc-emoji">📊</span><span>DBMS</span></div>
+            <div class="tool-chip"><span class="tc-emoji">🔐</span><span>Blockchain</span></div>
+            <div class="tool-chip"><span class="tc-emoji">⚡</span><span>DevOps</span></div>
+            <div class="tool-chip"><span class="tc-emoji">🤖</span><span>Agile</span></div>
+          </div>
+          <div class="skills-terminal">
+            <div class="st-header">
+              <div class="st-dots"><i></i><i></i><i></i></div>
+              <span>yogesh@portfolio:~</span>
+            </div>
+            <div class="st-body" id="terminalBody">
+              <div class="stb-line"><span class="stb-p">~</span> <span class="stb-cmd">whoami</span></div>
+              <div class="stb-line stb-out">yogesh — full stack developer</div>
+              <div class="stb-line"><span class="stb-p">~</span> <span class="stb-cmd">cat skills.json | jq '.level'</span></div>
+              <div class="stb-line stb-out">"senior-aspirant"</div>
+              <div class="stb-line"><span class="stb-p">~</span> <span class="stb-cmd">echo $STATUS</span></div>
+              <div class="stb-line stb-out stb-green">open_to_work=true</div>
+              <div class="stb-line"><span class="stb-p">~</span> <span class="stb-blink">█</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PROJECTS ═══════════════ -->
+  <section id="projects" class="section projects">
+    <div class="wrap">
+      <div class="section-header reveal">
+        <span class="sh-tag">03 / Projects</span>
+        <h2 class="sh-title">Selected Work<span class="accent">.</span></h2>
+      </div>
+
+      <!-- Filter Bar -->
+      <div class="filter-bar reveal">
+        <button class="fb-btn active" data-filter="all">All</button>
+        <button class="fb-btn" data-filter="java">Java</button>
+        <button class="fb-btn" data-filter="web">Web</button>
+        <button class="fb-btn" data-filter="fullstack">Full Stack</button>
+      </div>
+
+      <div class="projects-grid" id="projectsGrid">
+        <!-- Project 01 -->
+        <article class="pcard" data-tags="web fullstack" data-tilt>
+          <div class="pcard-glow"></div>
+          <div class="pcard-inner">
+            <div class="pcard-top">
+              <div class="pcard-num">01</div>
+              <div class="pcard-actions">
+                <a href="https://github.com/YogeshKumar445/Smart-life-dashboard.git" target="_blank" class="pca-link" data-cursor="View">
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="18"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+              </div>
+            </div>
+            <div class="pcard-icon">📊</div>
+            <h3 class="pcard-title">Smart Life Dashboard</h3>
+            <p class="pcard-desc">Modular productivity dashboard integrating task management, health tracking, and personal finance into one unified interface.</p>
+            <div class="pcard-stack">
+              <span>HTML</span><span>CSS</span><span>JavaScript</span><span>APIs</span>
+            </div>
+            <div class="pcard-footer">
+              <div class="pcf-bar"><div class="pcf-fill" style="width:85%"></div></div>
+              <span class="pcf-label">85% complete</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 02 -->
+        <article class="pcard pcard-featured" data-tags="java" data-tilt>
+          <div class="pcard-glow"></div>
+          <div class="pcard-badge">Featured</div>
+          <div class="pcard-inner">
+            <div class="pcard-top">
+              <div class="pcard-num">02</div>
+              <div class="pcard-actions">
+                <a href="https://github.com/YogeshKumar445/Shooting_game.git" target="_blank" class="pca-link" data-cursor="View">
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="18"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+              </div>
+            </div>
+            <div class="pcard-icon">🎮</div>
+            <h3 class="pcard-title">Beat It — Java Shooter</h3>
+            <p class="pcard-desc">Java-based shooting game demonstrating advanced OOP principles, design patterns, and Swing GUI development.</p>
+            <div class="pcard-stack">
+              <span>Java</span><span>Swing</span><span>OOP</span><span>Design Patterns</span>
+            </div>
+            <div class="pcard-footer">
+              <div class="pcf-bar"><div class="pcf-fill" style="width:100%"></div></div>
+              <span class="pcf-label">Production ready</span>
+            </div>
+          </div>
+        </article>
+
+        <!-- Project 03 -->
+        <article class="pcard" data-tags="web fullstack" data-tilt>
+          <div class="pcard-glow"></div>
+          <div class="pcard-inner">
+            <div class="pcard-top">
+              <div class="pcard-num">03</div>
+              <div class="pcard-actions">
+                <a href="https://github.com/YogeshKumar445/Health_Coach.git" target="_blank" class="pca-link" data-cursor="View">
+                  <svg viewBox="0 0 24 24" fill="currentColor" width="18"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+                </a>
+              </div>
+            </div>
+            <div class="pcard-icon">🏃</div>
+            <h3 class="pcard-title">Health Coach App</h3>
+            <p class="pcard-desc">Web application delivering personalized health guidance, workout tracking, and wellness monitoring features.</p>
+            <div class="pcard-stack">
+              <span>Node.js</span><span>HTML</span><span>CSS</span><span>JS</span>
+            </div>
+            <div class="pcard-footer">
+              <div class="pcf-bar"><div class="pcf-fill" style="width:90%"></div></div>
+              <span class="pcf-label">90% complete</span>
+            </div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ GITHUB API ═══════════════ -->
+  <section id="github" class="section github-sec">
+    <div class="wrap">
+      <div class="section-header reveal">
+        <span class="sh-tag">04 / GitHub</span>
+        <h2 class="sh-title">Live Repositories<span class="accent">.</span></h2>
+        <p class="sh-sub">Pulled directly from the GitHub API in real-time.</p>
+      </div>
+
+      <div class="gh-profile-bar reveal">
+        <div class="ghpb-avatar">
+          <img src="https://github.com/YogeshKumar445.png" alt="Yogesh Kumar" id="ghAvatar" onerror="this.src='https://avatars.githubusercontent.com/u/0'" />
+        </div>
+        <div class="ghpb-info">
+          <strong id="ghName">YogeshKumar445</strong>
+          <span id="ghBio">Loading GitHub profile...</span>
+        </div>
+        <div class="ghpb-stats">
+          <div><span id="ghRepos">—</span><small>Repos</small></div>
+          <div><span id="ghFollowers">—</span><small>Followers</small></div>
+          <div><span id="ghFollowing">—</span><small>Following</small></div>
+        </div>
+        <a href="https://github.com/YogeshKumar445" target="_blank" class="ghpb-btn">View Profile ↗</a>
+      </div>
+
+      <div class="repo-grid" id="repoGrid">
+        <div class="repo-loading" id="repoLoading">
+          <div class="rl-spinner"></div>
+          <span>Fetching repositories...</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ PROFILES ═══════════════ -->
+  <section id="profiles" class="section profiles">
+    <div class="wrap">
+      <div class="section-header reveal">
+        <span class="sh-tag">05 / Profiles</span>
+        <h2 class="sh-title">Find Me Online<span class="accent">.</span></h2>
+      </div>
+      <div class="profile-row">
+        <a href="https://github.com/YogeshKumar445" target="_blank" class="prof-card reveal" data-tilt>
+          <div class="prof-bg" style="--c1:#24292e;--c2:#444d56"></div>
+          <svg class="prof-logo" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+          <span class="prof-name">GitHub</span>
+          <span class="prof-handle">@YogeshKumar445</span>
+          <span class="prof-arrow">↗</span>
+        </a>
+        <a href="https://www.linkedin.com/in/yogesh-kumar-977164326" target="_blank" class="prof-card reveal" data-tilt style="--delay:80ms">
+          <div class="prof-bg" style="--c1:#0077b5;--c2:#005885"></div>
+          <svg class="prof-logo" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <span class="prof-name">LinkedIn</span>
+          <span class="prof-handle">yogesh-kumar</span>
+          <span class="prof-arrow">↗</span>
+        </a>
+        <a href="https://leetcode.com/Yogesh445-yk/" target="_blank" class="prof-card reveal" data-tilt style="--delay:160ms">
+          <div class="prof-bg" style="--c1:#ffa116;--c2:#b87000"></div>
+          <svg class="prof-logo" viewBox="0 0 24 24" fill="currentColor"><path d="M13.483 0a1.374 1.374 0 0 0-.961.438L7.116 6.226l-3.854 4.126a5.266 5.266 0 0 0-1.209 2.104 5.35 5.35 0 0 0-.125.513 5.527 5.527 0 0 0 .062 2.362 5.83 5.83 0 0 0 .349 1.017 5.938 5.938 0 0 0 1.271 1.818l4.277 4.193.039.038c2.248 2.165 5.852 2.133 8.063-.074l2.396-2.392c.54-.54.54-1.414.003-1.955a1.378 1.378 0 0 0-1.951-.003l-2.396 2.392a3.021 3.021 0 0 1-4.205.038l-.02-.019-4.276-4.193c-.652-.64-.972-1.469-.948-2.263a2.68 2.68 0 0 1 .066-.523 2.545 2.545 0 0 1 .619-1.164L9.13 8.114c1.058-1.134 3.204-1.27 4.43-.278l3.501 2.831c.593.48 1.461.387 1.94-.207a1.384 1.384 0 0 0-.207-1.943l-3.5-2.831c-.8-.647-1.766-1.045-2.774-1.202l2.015-2.158A1.384 1.384 0 0 0 13.483 0zm-2.866 12.815a1.38 1.38 0 0 0-1.38 1.382 1.38 1.38 0 0 0 1.38 1.382H20.79a1.38 1.38 0 0 0 1.38-1.382 1.38 1.38 0 0 0-1.38-1.382z"/></svg>
+          <span class="prof-name">LeetCode</span>
+          <span class="prof-handle">100+ problems</span>
+          <span class="prof-arrow">↗</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ ACHIEVEMENTS ═══════════════ -->
+  <section id="achievements" class="section achievements">
+    <div class="wrap">
+      <div class="section-header reveal">
+        <span class="sh-tag">06 / Achievements</span>
+        <h2 class="sh-title">Milestones<span class="accent">.</span></h2>
+      </div>
+      <div class="ach-list">
+        <div class="ach-item reveal">
+          <div class="ach-idx">01</div>
+          <div class="ach-ico">🏆</div>
+          <div class="ach-content">
+            <h3>100+ LeetCode Problems Solved</h3>
+            <p>Consistently grinding algorithmic challenges covering arrays, trees, graphs, DP — sharpening problem-solving fundamentals.</p>
+          </div>
+          <div class="ach-bar"></div>
+        </div>
+        <div class="ach-item reveal" style="--delay:80ms">
+          <div class="ach-idx">02</div>
+          <div class="ach-ico">🔥</div>
+          <div class="ach-content">
+            <h3>Hackathon Participant</h3>
+            <p>Competed in multiple hackathons — shipping prototypes under pressure and collaborating with cross-functional teams.</p>
+          </div>
+          <div class="ach-bar"></div>
+        </div>
+        <div class="ach-item reveal" style="--delay:160ms">
+          <div class="ach-idx">03</div>
+          <div class="ach-ico">🛠️</div>
+          <div class="ach-content">
+            <h3>Multiple Software Projects Deployed</h3>
+            <p>Built and shipped full-stack applications spanning health-tech, gaming, and productivity domains with real users.</p>
+          </div>
+          <div class="ach-bar"></div>
+        </div>
+        <div class="ach-item reveal" style="--delay:240ms">
+          <div class="ach-idx">04</div>
+          <div class="ach-ico">📚</div>
+          <div class="ach-content">
+            <h3>Continuous Learning Path</h3>
+            <p>Actively studying DevOps pipelines, Cloud Architecture (AWS/GCP), and Blockchain smart contract development.</p>
+          </div>
+          <div class="ach-bar"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ CONTACT ═══════════════ -->
+  <section id="contact" class="section contact">
+    <div class="wrap">
+      <div class="section-header reveal">
+        <span class="sh-tag">07 / Contact</span>
+        <h2 class="sh-title">Let's Build<span class="accent">.</span></h2>
+        <p class="sh-sub">Have a project, opportunity, or just want to say hi?</p>
+      </div>
+      <div class="contact-layout">
+        <div class="contact-form-wrap reveal">
+          <form id="contactForm" class="cf" novalidate>
+            <div class="cf-group">
+              <input type="text" id="cfName" placeholder=" " required />
+              <label for="cfName">Your Name</label>
+              <span class="cf-focus-line"></span>
+            </div>
+            <div class="cf-group">
+              <input type="email" id="cfEmail" placeholder=" " required />
+              <label for="cfEmail">Email Address</label>
+              <span class="cf-focus-line"></span>
+            </div>
+            <div class="cf-group">
+              <textarea id="cfMsg" placeholder=" " rows="5" required></textarea>
+              <label for="cfMsg">Message</label>
+              <span class="cf-focus-line"></span>
+            </div>
+            <button type="submit" class="cf-submit" id="cfSubmit">
+              <span class="cfs-text">Send Message</span>
+              <span class="cfs-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+              </span>
+            </button>
+          </form>
+          <div class="cf-success" id="cfSuccess">
+            <div class="cfs-check">✓</div>
+            <strong>Message sent!</strong>
+            <p>I'll get back to you within 24 hours.</p>
+          </div>
+        </div>
+        <div class="contact-info reveal" style="--delay:100ms">
+          <div class="ci-item">
+            <span class="ci-icon">📍</span>
+            <div><strong>Location</strong><span>Noida, Uttar Pradesh, India</span></div>
+          </div>
+          <div class="ci-item">
+            <span class="ci-icon">🎓</span>
+            <div><strong>College</strong><span>NIET — B.Tech Computer Science</span></div>
+          </div>
+          <div class="ci-item">
+            <span class="ci-icon">💼</span>
+            <div><strong>Status</strong><span class="ci-open">Open to Opportunities</span></div>
+          </div>
+          <div class="ci-item">
+            <span class="ci-icon">⚡</span>
+            <div><strong>Response Time</strong><span>Within 24 hours</span></div>
+          </div>
+          <div class="ci-social">
+            <a href="https://github.com/YogeshKumar445" target="_blank" class="cis-link">GH</a>
+            <a href="https://www.linkedin.com/in/yogesh-kumar-977164326" target="_blank" class="cis-link">LI</a>
+            <a href="https://leetcode.com/Yogesh445-yk/" target="_blank" class="cis-link">LC</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════ FOOTER ═══════════════ -->
+  <footer class="footer">
+    <div class="footer-noise"></div>
+    <div class="wrap footer-inner">
+      <div class="fi-brand">
+        <span class="fi-logo">YK<span class="accent">.</span></span>
+        <p>Full Stack Developer · Java · MERN · DevOps</p>
+      </div>
+      <div class="fi-links">
+        <a href="https://github.com/YogeshKumar445" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/yogesh-kumar-977164326" target="_blank">LinkedIn</a>
+        <a href="https://leetcode.com/Yogesh445-yk/" target="_blank">LeetCode</a>
+      </div>
+      <p class="fi-copy">© 2025 Yogesh Kumar. Crafted with ❤️ &amp; ☕</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
