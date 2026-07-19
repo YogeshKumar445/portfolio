@@ -135,7 +135,7 @@ button{cursor:none;border:none;background:none}
 .fb{padding:8px 20px;background:var(--sf);border:1px solid var(--bd);border-radius:100px;font-family:'JetBrains Mono',monospace;font-size:12px;color:rgba(255,255,255,.4);cursor:pointer;transition:all .2s}
 .fb:hover{border-color:rgba(0,229,255,.35);color:var(--cyan)}
 .fb.active{background:var(--cyan);border-color:var(--cyan);color:#060810;font-weight:600}
-.pgg{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.pgg{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
 .pc{background:var(--sf);border:1px solid var(--bd);border-radius:20px;overflow:hidden;position:relative;transform-style:preserve-3d;transition:border-color .3s,box-shadow .3s,opacity .4s,transform .4s}
 .pc:hover{border-color:rgba(0,229,255,.25)}
 .pc.hide{opacity:0;transform:scale(.9) translateY(16px);pointer-events:none}
@@ -322,8 +322,8 @@ footer{background:#040508;border-top:1px solid var(--bd);padding:48px 0;text-ali
       <span class="blink" style="color:var(--cyan);font-family:'JetBrains Mono',monospace">█</span>
     </div>
     <p class="h-sub">
-      B.Tech CS @ NIET &nbsp;·&nbsp; Full Stack &nbsp;·&nbsp; Java<br/>
-      <span style="font-family:'JetBrains Mono',monospace;color:var(--am);font-size:13px">📚 Learning: DevOps · Cloud · Blockchain</span>
+      B.Tech CS @ NIET &nbsp;·&nbsp; Java + Spring Boot &nbsp;·&nbsp; React.js<br/>
+      <span style="font-family:'JetBrains Mono',monospace;color:var(--am);font-size:13px">📚 Exploring: AI Integration · DevOps · Cloud</span>
     </p>
     <div class="h-cta">
       <a href="#projects" class="btn-p">
@@ -338,9 +338,9 @@ footer{background:#040508;border-top:1px solid var(--bd);padding:48px 0;text-ali
     <div class="h-stats">
       <div style="text-align:center"><div><span class="stn counter" data-n="100">0</span><span style="color:var(--cyan);font-weight:700">+</span></div><span class="stl">LeetCode</span></div>
       <div class="std"></div>
-      <div style="text-align:center"><div><span class="stn counter" data-n="3">0</span><span style="color:var(--cyan);font-weight:700">+</span></div><span class="stl">Projects</span></div>
+      <div style="text-align:center"><div><span class="stn counter" data-n="5">0</span><span style="color:var(--cyan);font-weight:700">+</span></div><span class="stl">Projects</span></div>
       <div class="std"></div>
-      <div style="text-align:center"><div><span class="stn counter" data-n="12">0</span><span style="color:var(--cyan);font-weight:700">+</span></div><span class="stl">Technologies</span></div>
+      <div style="text-align:center"><div><span class="stn counter" data-n="14">0</span><span style="color:var(--cyan);font-weight:700">+</span></div><span class="stl">Technologies</span></div>
     </div>
   </div>
   <div class="scroll-h">
@@ -363,7 +363,7 @@ footer{background:#040508;border-top:1px solid var(--bd);padding:48px 0;text-ali
           <h3 style="font-family:'Syne',sans-serif;font-size:19px;font-weight:700;margin-top:16px;margin-bottom:4px">Yogesh Kumar</h3>
           <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--cyan);margin-bottom:14px">Full Stack Developer</p>
           <div style="display:flex;gap:7px;justify-content:center;flex-wrap:wrap;margin-bottom:18px">
-            <span class="cbadge">Java</span><span class="cbadge">MERN</span><span class="cbadge">DevOps</span>
+            <span class="cbadge">Java</span><span class="cbadge">Spring Boot</span><span class="cbadge">React.js</span>
           </div>
           <div class="acst">
             <div><strong>NIET</strong><small>College</small></div>
@@ -373,11 +373,11 @@ footer{background:#040508;border-top:1px solid var(--bd);padding:48px 0;text-ali
         </div>
       </div>
       <div class="rv" style="--d:120ms">
-        <p class="alead">I'm a <strong style="color:var(--cyan)">Computer Science student</strong> at Noida Institute of Engineering and Technology, passionate about building full-stack products.</p>
-        <p class="abody">Core strengths in <span class="itag">Java</span> backend and <span class="itag">MERN</span> full-stack. Expanding into <span class="itag v">DevOps</span>, <span class="itag v">Cloud</span>, and <span class="itag a">Blockchain</span>.</p>
+        <p class="alead">I'm a <strong style="color:var(--cyan)">Computer Science student</strong> at Noida Institute of Engineering and Technology, building backend systems with Spring Boot and dynamic frontends with React.js.</p>
+        <p class="abody">Core strengths in <span class="itag">Java + Spring Boot</span> backend and <span class="itag">MERN</span> full-stack. Currently integrating <span class="itag a">AI (Gemini API)</span> into real projects and exploring <span class="itag v">DevOps</span> and <span class="itag v">Cloud</span>.</p>
         <div class="intg">
-          <div class="inti"><span>⚙️</span>Full Stack</div><div class="inti"><span>☕</span>Java Dev</div>
-          <div class="inti"><span>☁️</span>Cloud</div><div class="inti"><span>🔗</span>Blockchain</div>
+          <div class="inti"><span>⚙️</span>Spring Boot</div><div class="inti"><span>⚛️</span>React.js</div>
+          <div class="inti"><span>🤖</span>AI Integration</div><div class="inti"><span>🔗</span>REST APIs</div>
           <div class="inti"><span>🚀</span>DevOps</div><div class="inti"><span>🧠</span>DSA</div>
         </div>
       </div>
@@ -397,21 +397,21 @@ footer{background:#040508;border-top:1px solid var(--bd);padding:48px 0;text-ali
         <p class="sksub">Languages &amp; Frameworks</p>
         <div class="skl">
           <div class="ski" data-w="90"><div class="skm"><span>Java</span><span>90%</span></div><div class="skt"><div class="skf" style="--c:#f89820"></div></div></div>
-          <div class="ski" data-w="78"><div class="skm"><span>JavaScript</span><span>78%</span></div><div class="skt"><div class="skf" style="--c:#f0db4f"></div></div></div>
-          <div class="ski" data-w="72"><div class="skm"><span>Python</span><span>72%</span></div><div class="skt"><div class="skf" style="--c:#3572a5"></div></div></div>
-          <div class="ski" data-w="88"><div class="skm"><span>HTML / CSS</span><span>88%</span></div><div class="skt"><div class="skf" style="--c:#e34c26"></div></div></div>
-          <div class="ski" data-w="75"><div class="skm"><span>Node.js / Express</span><span>75%</span></div><div class="skt"><div class="skf" style="--c:#68a063"></div></div></div>
-          <div class="ski" data-w="70"><div class="skm"><span>MongoDB</span><span>70%</span></div><div class="skt"><div class="skf" style="--c:#4db33d"></div></div></div>
-          <div class="ski" data-w="68"><div class="skm"><span>SQL</span><span>68%</span></div><div class="skt"><div class="skf" style="--c:#00758f"></div></div></div>
+          <div class="ski" data-w="85"><div class="skm"><span>Spring Boot / Spring MVC</span><span>85%</span></div><div class="skt"><div class="skf" style="--c:#6db33f"></div></div></div>
+          <div class="ski" data-w="80"><div class="skm"><span>React.js</span><span>80%</span></div><div class="skt"><div class="skf" style="--c:#61dafb"></div></div></div>
+          <div class="ski" data-w="76"><div class="skm"><span>JavaScript</span><span>76%</span></div><div class="skt"><div class="skf" style="--c:#f0db4f"></div></div></div>
+          <div class="ski" data-w="74"><div class="skm"><span>Node.js / Express.js</span><span>74%</span></div><div class="skt"><div class="skf" style="--c:#68a063"></div></div></div>
+          <div class="ski" data-w="72"><div class="skm"><span>MySQL / MongoDB</span><span>72%</span></div><div class="skt"><div class="skf" style="--c:#4db33d"></div></div></div>
+          <div class="ski" data-w="68"><div class="skm"><span>Python</span><span>68%</span></div><div class="skt"><div class="skf" style="--c:#3572a5"></div></div></div>
         </div>
       </div>
       <div class="rv" style="--d:100ms">
         <p class="sksub">Tools &amp; Platforms</p>
         <div class="ccloud">
-          <span class="tchip">Git/GitHub</span><span class="tchip">Linux</span><span class="tchip">Docker</span>
-          <span class="tchip">REST APIs</span><span class="tchip">OOP</span><span class="tchip">DBMS</span>
-          <span class="tchip">Blockchain</span><span class="tchip">DevOps</span><span class="tchip">Cloud</span>
-          <span class="tchip">DSA</span><span class="tchip">Agile</span><span class="tchip">OS</span>
+          <span class="tchip">Git/GitHub</span><span class="tchip">Postman</span><span class="tchip">VS Code</span>
+          <span class="tchip">REST APIs</span><span class="tchip">OOP</span><span class="tchip">DSA</span>
+          <span class="tchip">Gemini API</span><span class="tchip">Docker</span><span class="tchip">Linux</span>
+          <span class="tchip">Oracle Cloud</span><span class="tchip">CI/CD</span><span class="tchip">OS</span>
         </div>
         <div class="tbox">
           <div class="thdr">
@@ -442,43 +442,66 @@ footer{background:#040508;border-top:1px solid var(--bd);padding:48px 0;text-ali
     </div>
     <div class="fb-wrap rv">
       <button class="fb active" data-f="all">All</button>
-      <button class="fb" data-f="java">Java</button>
-      <button class="fb" data-f="web">Web</button>
+      <button class="fb" data-f="java">Java Backend</button>
+      <button class="fb" data-f="ai">AI</button>
       <button class="fb" data-f="fullstack">Full Stack</button>
     </div>
     <div class="pgg" id="pgrid">
-      <article class="pc rv" data-tags="web fullstack" data-tilt>
-        <div class="pcgl" style="background:radial-gradient(circle at 50% 0%,rgba(0,229,255,.09),transparent 65%)"></div>
-        <div class="pcb">
-          <div class="pctp"><span class="pcn">01</span><a href="https://github.com/YogeshKumar445/Smart-life-dashboard.git" target="_blank" class="pcl">↗</a></div>
-          <div style="font-size:30px">📊</div>
-          <h3 class="pct">Smart Life Dashboard</h3>
-          <p class="pcd">Modular productivity dashboard integrating task, health, and finance modules into one unified interface.</p>
-          <div class="pcst"><span>HTML</span><span>CSS</span><span>JavaScript</span></div>
-          <div class="pcp"><div class="ppb"><div class="ppf" style="width:85%"></div></div><span class="ppl">85%</span></div>
-        </div>
-      </article>
-      <article class="pc pcf rv" data-tags="java" data-tilt style="--d:80ms">
+      <article class="pc pcf rv" data-tags="java fullstack" data-tilt>
         <div class="pcgl" style="background:radial-gradient(circle at 50% 0%,rgba(0,229,255,.09),transparent 65%)"></div>
         <span class="fbadge">Featured</span>
         <div class="pcb">
-          <div class="pctp"><span class="pcn">02</span><a href="https://github.com/YogeshKumar445/Shooting_game.git" target="_blank" class="pcl">↗</a></div>
-          <div style="font-size:30px">🎮</div>
-          <h3 class="pct">Beat It — Java Shooter</h3>
-          <p class="pcd">Java-based shooting game with advanced OOP principles, design patterns, and Swing GUI development.</p>
-          <div class="pcst"><span>Java</span><span>Swing</span><span>OOP</span></div>
+          <div class="pctp"><span class="pcn">01</span><a href="https://github.com/YogeshKumar445" target="_blank" class="pcl">↗</a></div>
+          <div style="font-size:30px">💱</div>
+          <h3 class="pct">CryptoX Exchange</h3>
+          <p class="pcd">Secure crypto exchange backend with layered architecture — authentication, wallet management, and transaction processing.</p>
+          <div class="pcst"><span>Java</span><span>Spring Boot</span><span>MySQL</span></div>
           <div class="pcp"><div class="ppb"><div class="ppf" style="width:100%"></div></div><span class="ppl">100%</span></div>
         </div>
       </article>
-      <article class="pc rv" data-tags="web fullstack" data-tilt style="--d:160ms">
+      <article class="pc rv" data-tags="ai fullstack" data-tilt style="--d:80ms">
+        <div class="pcgl" style="background:radial-gradient(circle at 50% 0%,rgba(0,229,255,.09),transparent 65%)"></div>
+        <span class="fbadge" style="background:var(--am)">In Progress</span>
+        <div class="pcb">
+          <div class="pctp"><span class="pcn">02</span><a href="https://github.com/YogeshKumar445" target="_blank" class="pcl">↗</a></div>
+          <div style="font-size:30px">🤖</div>
+          <h3 class="pct">AI Resume Analyzer</h3>
+          <p class="pcd">AI-powered platform comparing resumes with job descriptions to generate ATS scores and improvement suggestions via Gemini API.</p>
+          <div class="pcst"><span>Spring Boot</span><span>React.js</span><span>Gemini API</span></div>
+          <div class="pcp"><div class="ppb"><div class="ppf" style="width:60%"></div></div><span class="ppl">60%</span></div>
+        </div>
+      </article>
+      <article class="pc rv" data-tags="fullstack" data-tilt style="--d:160ms">
         <div class="pcgl" style="background:radial-gradient(circle at 50% 0%,rgba(0,229,255,.09),transparent 65%)"></div>
         <div class="pcb">
-          <div class="pctp"><span class="pcn">03</span><a href="https://github.com/YogeshKumar445/Health_Coach.git" target="_blank" class="pcl">↗</a></div>
-          <div style="font-size:30px">🏃</div>
-          <h3 class="pct">Health Coach App</h3>
-          <p class="pcd">Web application providing personalized health guidance and real-time wellness monitoring features.</p>
-          <div class="pcst"><span>Node.js</span><span>HTML</span><span>CSS</span></div>
+          <div class="pctp"><span class="pcn">03</span><a href="https://github.com/YogeshKumar445" target="_blank" class="pcl">↗</a></div>
+          <div style="font-size:30px">🏠</div>
+          <h3 class="pct">Nestora</h3>
+          <p class="pcd">Full-stack MERN platform for property listing and booking — search, filters, booking flow, and host dashboard.</p>
+          <div class="pcst"><span>MongoDB</span><span>Express.js</span><span>React.js</span></div>
           <div class="pcp"><div class="ppb"><div class="ppf" style="width:90%"></div></div><span class="ppl">90%</span></div>
+        </div>
+      </article>
+      <article class="pc rv" data-tags="fullstack" data-tilt style="--d:240ms">
+        <div class="pcgl" style="background:radial-gradient(circle at 50% 0%,rgba(0,229,255,.09),transparent 65%)"></div>
+        <div class="pcb">
+          <div class="pctp"><span class="pcn">04</span><a href="https://github.com/YogeshKumar445" target="_blank" class="pcl">↗</a></div>
+          <div style="font-size:30px">🌍</div>
+          <h3 class="pct">GlobeVerse</h3>
+          <p class="pcd">Interactive 3D globe web app with rotating textured Earth, starfield, and glassmorphism UI built on React Three Fiber.</p>
+          <div class="pcst"><span>React</span><span>Three.js</span><span>Tailwind</span></div>
+          <div class="pcp"><div class="ppb"><div class="ppf" style="width:45%"></div></div><span class="ppl">45%</span></div>
+        </div>
+      </article>
+      <article class="pc rv" data-tags="java" data-tilt style="--d:320ms">
+        <div class="pcgl" style="background:radial-gradient(circle at 50% 0%,rgba(0,229,255,.09),transparent 65%)"></div>
+        <div class="pcb">
+          <div class="pctp"><span class="pcn">05</span><a href="https://github.com/YogeshKumar445/Shooting_game.git" target="_blank" class="pcl">↗</a></div>
+          <div style="font-size:30px">🎮</div>
+          <h3 class="pct">Beat It — Java Shooter</h3>
+          <p class="pcd">2D shooting game with event-driven programming, OOP design, and a custom GUI built on Java Swing.</p>
+          <div class="pcst"><span>Java</span><span>Swing</span><span>OOP</span></div>
+          <div class="pcp"><div class="ppb"><div class="ppf" style="width:100%"></div></div><span class="ppl">100%</span></div>
         </div>
       </article>
     </div>
@@ -548,8 +571,8 @@ footer{background:#040508;border-top:1px solid var(--bd);padding:48px 0;text-ali
     <div class="achl">
       <div class="achi rv"><div class="achb"></div><span class="achx">01</span><span class="achic">🏆</span><div><h3 class="acht">100+ LeetCode Problems Solved</h3><p class="achd">Grinding arrays, trees, graphs, and dynamic programming consistently.</p></div></div>
       <div class="achi rv" style="--d:80ms"><div class="achb"></div><span class="achx">02</span><span class="achic">🔥</span><div><h3 class="acht">Hackathon Participant</h3><p class="achd">Competed in multiple hackathons, shipping under pressure with cross-functional teams.</p></div></div>
-      <div class="achi rv" style="--d:160ms"><div class="achb"></div><span class="achx">03</span><span class="achic">🛠️</span><div><h3 class="acht">Multiple Software Projects Deployed</h3><p class="achd">Full-stack applications across health-tech, gaming, and productivity domains.</p></div></div>
-      <div class="achi rv" style="--d:240ms"><div class="achb"></div><span class="achx">04</span><span class="achic">📚</span><div><h3 class="acht">Continuous Learning</h3><p class="achd">Studying DevOps, Cloud Architecture (AWS/GCP), and Blockchain smart contracts.</p></div></div>
+      <div class="achi rv" style="--d:160ms"><div class="achb"></div><span class="achx">03</span><span class="achic">🎓</span><div><h3 class="acht">Cloud &amp; Linux Certified</h3><p class="achd">Oracle Cloud Infrastructure AI Foundations Associate and Linux Foundation Certification.</p></div></div>
+      <div class="achi rv" style="--d:240ms"><div class="achb"></div><span class="achx">04</span><span class="achic">🛠️</span><div><h3 class="acht">5+ Full Stack Projects Shipped</h3><p class="achd">From a crypto exchange backend to a MERN booking platform and an AI resume tool.</p></div></div>
     </div>
   </div>
 </section>
@@ -598,7 +621,7 @@ footer{background:#040508;border-top:1px solid var(--bd);padding:48px 0;text-ali
 <footer>
   <div class="wrap" style="display:flex;flex-direction:column;align-items:center;gap:10px">
     <span style="font-family:'Syne',sans-serif;font-size:28px;font-weight:900;letter-spacing:-1px">YK<span style="color:var(--cyan)">.</span></span>
-    <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:rgba(255,255,255,.25)">Full Stack · Java · MERN · DevOps</p>
+    <p style="font-family:'JetBrains Mono',monospace;font-size:12px;color:rgba(255,255,255,.25)">Java Full Stack · Spring Boot · React.js · AI</p>
     <div style="display:flex;gap:24px;margin-top:4px">
       <a href="https://github.com/YogeshKumar445" target="_blank" class="ftl">GitHub</a>
       <a href="https://www.linkedin.com/in/yogesh-kumar-977164326" target="_blank" class="ftl">LinkedIn</a>
@@ -653,7 +676,7 @@ footer{background:#040508;border-top:1px solid var(--bd);padding:48px 0;text-ali
 // ── Typed ──
 (function(){
   const el=document.getElementById('typed');if(!el)return;
-  const ph=['Full Stack Developer','Java Engineer','MERN Stack Builder','Problem Solver','DevOps Learner'];
+  const ph=['Java Full Stack Developer','Spring Boot Engineer','React.js Developer','AI-Curious Builder','Problem Solver'];
   let pi=0,ci=0,del=false;
   function t(){
     const p=ph[pi];
